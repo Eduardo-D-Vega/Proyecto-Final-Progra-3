@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PlataformaEmpleo.Models.CV>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FormacionAcademica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExperienciaLaboral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilidades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idiomas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RutaArchivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidato)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormacionAcademica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExperienciaLaboral)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habilidades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idiomas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RutaArchivo)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Candidato.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCV">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCV">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCV">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

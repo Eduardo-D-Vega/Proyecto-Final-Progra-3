@@ -1,0 +1,39 @@
+﻿@model PlataformaEmpleo.Models.OfertaPostulacion
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OfertaPostulacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OfertasPostulacionesId" />
+            <div class="form-group">
+                <label>Postulacion</label>
+                <select asp-for="IdPostulacion" class="form-control" asp-items="ViewBag.IdPostulacion"></select>
+                <span asp-validation-for="IdPostulacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Oferta de empleo</label>
+                <select asp-for="IdOferta" class="form-control" asp-items="ViewBag.IdOferta"></select>
+                <span asp-validation-for="IdOferta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

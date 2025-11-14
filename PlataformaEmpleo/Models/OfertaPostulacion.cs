@@ -1,0 +1,22 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PlataformaEmpleo.Models
+{
+    public class OfertaPostulacion  //tabla intermedia
+    {
+        [Key]
+        public int OfertasPostulacionesId { get; set; }
+
+        //FK de Postulacion y Oferta
+        public int IdPostulacion { get; set; }
+        public int IdOferta { get; set; }
+
+        //Propiedades de navegación de factura y producto
+        [ForeignKey("IdPostulacion")]
+        public Postulacion Postulacion { get; set; }
+
+        [ForeignKey("IdOferta")]
+        public OfertaEmpleo OfertaEmpleo { get; set; }
+    }
+}
