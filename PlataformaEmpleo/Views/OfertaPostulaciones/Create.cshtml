@@ -1,0 +1,36 @@
+﻿@model PlataformaEmpleo.Models.OfertaPostulacion
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>OfertaPostulacion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Estado de postulacion</label>
+                <select asp-for="IdPostulacion" class ="form-control" asp-items="ViewBag.IdPostulacion"></select>
+            </div>
+            <div class="form-group">
+                <label>Oferta de trabajo</label>
+                <select asp-for="IdOferta" class ="form-control" asp-items="ViewBag.IdOferta"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
