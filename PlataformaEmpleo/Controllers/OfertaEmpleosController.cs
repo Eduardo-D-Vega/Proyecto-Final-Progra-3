@@ -35,8 +35,9 @@ namespace PlataformaEmpleo.Controllers
             }
 
             var ofertaEmpleo = await _context.OfertaEmpleo
-                .Include(o => o.Reclutador)
-                //.Include(o => o.postulacionesEmpleos)
+                .Include(o => o.Postulaciones) //lista de ofertaEmpelo a OfertaPostulacion
+                    .ThenInclude(p => p.Postulaciones) 
+                    .ThenInclude(p => p.Candidato)
                 .FirstOrDefaultAsync(m => m.IdOferta == id);
             if (ofertaEmpleo == null)
             {

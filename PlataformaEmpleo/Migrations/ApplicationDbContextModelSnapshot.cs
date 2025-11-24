@@ -33,6 +33,10 @@ namespace PlataformaEmpleo.Migrations
                     b.Property<int>("CandidatoId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Certificaciones")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ExperienciaLaboral")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -49,7 +53,7 @@ namespace PlataformaEmpleo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("rutaArchivo")
+                    b.Property<string>("PerfilProfesional")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -69,19 +73,19 @@ namespace PlataformaEmpleo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCandidato"));
 
-                    b.Property<string>("apellido")
+                    b.Property<string>("Apellido")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ciudad")
+                    b.Property<string>("Ciudad")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nombre")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("telefono")
+                    b.Property<string>("Telefono")
                         .IsRequired()
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
@@ -182,14 +186,9 @@ namespace PlataformaEmpleo.Migrations
                     b.Property<int>("IdCandidato")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OfertaEmpleoIdOferta")
-                        .HasColumnType("int");
-
                     b.HasKey("IdPostulacion");
 
                     b.HasIndex("IdCandidato");
-
-                    b.HasIndex("OfertaEmpleoIdOferta");
 
                     b.ToTable("Postulacion");
                 });
@@ -202,11 +201,11 @@ namespace PlataformaEmpleo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdReclutador"));
 
-                    b.Property<string>("correoEmpresa")
+                    b.Property<string>("CorreoEmpresa")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nombreEmpresa")
+                    b.Property<string>("NombreEmpresa")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -217,13 +216,13 @@ namespace PlataformaEmpleo.Migrations
 
             modelBuilder.Entity("PlataformaEmpleo.Models.CV", b =>
                 {
-                    b.HasOne("PlataformaEmpleo.Models.Candidato", "candidato")
+                    b.HasOne("PlataformaEmpleo.Models.Candidato", "Candidato")
                         .WithOne("cv")
                         .HasForeignKey("PlataformaEmpleo.Models.CV", "CandidatoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("candidato");
+                    b.Navigation("Candidato");
                 });
 
             modelBuilder.Entity("PlataformaEmpleo.Models.OfertaEmpleo", b =>
@@ -239,54 +238,50 @@ namespace PlataformaEmpleo.Migrations
 
             modelBuilder.Entity("PlataformaEmpleo.Models.OfertaPostulacion", b =>
                 {
-                    b.HasOne("PlataformaEmpleo.Models.OfertaEmpleo", "ofertaEmpleo")
-                        .WithMany()
+                    b.HasOne("PlataformaEmpleo.Models.OfertaEmpleo", "OfertaEmpleo")
+                        .WithMany("Postulaciones")
                         .HasForeignKey("IdOferta")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("PlataformaEmpleo.Models.Postulacion", "postulacion")
-                        .WithMany("ofertasPostulaciones")
+                    b.HasOne("PlataformaEmpleo.Models.Postulacion", "Postulaciones")
+                        .WithMany("OfertasPostulaciones")
                         .HasForeignKey("IdPostulacion")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ofertaEmpleo");
+                    b.Navigation("OfertaEmpleo");
 
-                    b.Navigation("postulacion");
+                    b.Navigation("Postulaciones");
                 });
 
             modelBuilder.Entity("PlataformaEmpleo.Models.Postulacion", b =>
                 {
-                    b.HasOne("PlataformaEmpleo.Models.Candidato", "candidato")
-                        .WithMany("postulaciones")
+                    b.HasOne("PlataformaEmpleo.Models.Candidato", "Candidato")
+                        .WithMany("Postulacion")
                         .HasForeignKey("IdCandidato")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("PlataformaEmpleo.Models.OfertaEmpleo", null)
-                        .WithMany("postulacionesEmpleos")
-                        .HasForeignKey("OfertaEmpleoIdOferta");
-
-                    b.Navigation("candidato");
+                    b.Navigation("Candidato");
                 });
 
             modelBuilder.Entity("PlataformaEmpleo.Models.Candidato", b =>
                 {
+                    b.Navigation("Postulacion");
+
                     b.Navigation("cv")
                         .IsRequired();
-
-                    b.Navigation("postulaciones");
                 });
 
             modelBuilder.Entity("PlataformaEmpleo.Models.OfertaEmpleo", b =>
                 {
-                    b.Navigation("postulacionesEmpleos");
+                    b.Navigation("Postulaciones");
                 });
 
             modelBuilder.Entity("PlataformaEmpleo.Models.Postulacion", b =>
                 {
-                    b.Navigation("ofertasPostulaciones");
+                    b.Navigation("OfertasPostulaciones");
                 });
 
             modelBuilder.Entity("PlataformaEmpleo.Models.Reclutador", b =>

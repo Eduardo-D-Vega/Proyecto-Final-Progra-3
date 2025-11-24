@@ -48,7 +48,7 @@ namespace PlataformaEmpleo.Controllers
         // GET: CVs/Create
         public IActionResult Create()
         {
-            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre");
+            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto");
             return View();
         }
 
@@ -57,8 +57,22 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCV,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,RutaArchivo,CandidatoId")] CV cV)
+        public async Task<IActionResult> Create([Bind("IdCV, PerfilProfesional,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,Certificaciones,CandidatoId")] CV cV)
         {
+            //validación para evitar un cv duplicado por candidato
+            var CvExistente = await _context.CV
+                .FirstOrDefaultAsync(x => x.CandidatoId == cV.CandidatoId);
+            
+            if (CvExistente != null)
+            {
+                //evita que el programa se caiga
+                ModelState.AddModelError("", "El candidato ya tiene un CV registrado. Puede editar el cv ya existente");
+
+                //se devuelve a la vista create con el error
+                ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto", cV.CandidatoId);
+                return View(cV);
+            }
+
             try
             {
                 _context.Add(cV);
@@ -87,7 +101,7 @@ namespace PlataformaEmpleo.Controllers
             {
                 return NotFound();
             }
-            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre", cV.CandidatoId);
+            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto", cV.CandidatoId);
             return View(cV);
         }
 
@@ -96,7 +110,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCV,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,RutaArchivo,CandidatoId")] CV cV)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCV,PerfilProfesional,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,Certificaciones,CandidatoId")] CV cV)
         {
             if (id != cV.IdCV)
             {

@@ -33,8 +33,9 @@ namespace PlataformaEmpleo.Models
         [ValidateNever]
         public Reclutador Reclutador { get; set; }
 
-        //relacion muchos a muchos con Postulacion
-        [ValidateNever]
-        public ICollection<Postulacion> postulacionesEmpleos { get; set; } = new List<Postulacion>();
+        //propiedad de navegacion a tabla intermedia OfertaPostulacion
+         [ValidateNever]
+        public ICollection<OfertaPostulacion> Postulaciones { get; set; }
+
     }
 }

@@ -6,12 +6,33 @@
 
 <h1>Index</h1>
 
+<!--si falla el programa al intentar crear un cv porque el candidato ya tiene un cv -->
+@if (TempData["ErrorCV"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorCV"]
+    </div>
+}
+<!--aplica si el cv se creo sin problemas-->
+@if (TempData["SuccessCV"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessCV"]
+    </div>
+}
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerfilProfesional)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FormacionAcademica)
             </th>
@@ -25,10 +46,7 @@
                 @Html.DisplayNameFor(model => model.Idiomas)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RutaArchivo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Candidato)
+                @Html.DisplayNameFor(model => model.Certificaciones)
             </th>
             <th></th>
         </tr>
@@ -36,6 +54,12 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.Candidato.Nombre)
+             </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.PerfilProfesional)
+             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FormacionAcademica)
             </td>
@@ -49,11 +73,7 @@
                 @Html.DisplayFor(modelItem => item.Idiomas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RutaArchivo)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.Candidato.Nombre)
-            </td>
+                @Html.DisplayFor(modelItem => item.Certificaciones)
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdCV">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.IdCV">Details</a> |

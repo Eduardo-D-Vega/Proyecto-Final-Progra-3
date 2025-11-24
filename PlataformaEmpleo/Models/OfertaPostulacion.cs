@@ -14,7 +14,7 @@ namespace PlataformaEmpleo.Models
 
         //Propiedades de navegación de factura y producto
         [ForeignKey("IdPostulacion")]
-        public Postulacion Postulacion { get; set; }
+        public Postulacion Postulaciones { get; set; }
 
         [ForeignKey("IdOferta")]
         public OfertaEmpleo OfertaEmpleo { get; set; }

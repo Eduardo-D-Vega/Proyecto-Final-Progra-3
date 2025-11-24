@@ -10,6 +10,18 @@
     <h4>CV</h4>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidato)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Candidato.NombreCompleto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PerfilProfesional)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PerfilProfesional)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FormacionAcademica)
         </dt>
@@ -34,17 +46,11 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Idiomas)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RutaArchivo)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Certificaciones)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RutaArchivo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Candidato)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Candidato.NombreCompleto)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Certificaciones)
         </dd>
     </dl>
 </div>

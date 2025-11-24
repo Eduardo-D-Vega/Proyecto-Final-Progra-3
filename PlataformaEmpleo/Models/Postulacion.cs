@@ -23,5 +23,6 @@ namespace PlataformaEmpleo.Models
         //propiedad de navegacion para la tabla intermedia OfertasPostulaciones
         [ValidateNever]
         public virtual ICollection<OfertaPostulacion> OfertasPostulaciones { get; set; }
+
     }
 }

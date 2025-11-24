@@ -22,7 +22,7 @@ namespace PlataformaEmpleo.Controllers
         // GET: OfertaPostulaciones
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.OfertaPostulacion.Include(o => o.OfertaEmpleo).Include(o => o.Postulacion);
+            var applicationDbContext = _context.OfertaPostulacion.Include(o => o.OfertaEmpleo).Include(o => o.Postulaciones);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,7 +36,7 @@ namespace PlataformaEmpleo.Controllers
 
             var ofertaPostulacion = await _context.OfertaPostulacion
                 .Include(o => o.OfertaEmpleo)
-                .Include(o => o.Postulacion)
+                .Include(o => o.Postulaciones)
                     .ThenInclude(p => p.Candidato) //incluye el candidato relacionado
                 .FirstOrDefaultAsync(m => m.OfertasPostulacionesId == id);
 
@@ -158,7 +158,7 @@ namespace PlataformaEmpleo.Controllers
 
             var ofertaPostulacion = await _context.OfertaPostulacion
                 .Include(o => o.OfertaEmpleo)
-                .Include(o => o.Postulacion)
+                .Include(o => o.Postulaciones)
                 .FirstOrDefaultAsync(m => m.OfertasPostulacionesId == id);
             if (ofertaPostulacion == null)
             {

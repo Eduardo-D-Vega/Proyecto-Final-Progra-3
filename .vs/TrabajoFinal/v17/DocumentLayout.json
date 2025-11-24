@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\controllers\\ofertaempleoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\controllers\\ofertaempleoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\models\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\models\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\views\\ofertaempleos\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\views\\ofertaempleos\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\controllers\\cvscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\controllers\\cvscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +18,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -33,29 +37,34 @@
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OfertaEmpleosController.cs",
-              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Controllers\\OfertaEmpleosController.cs",
-              "RelativeDocumentMoniker": "PlataformaEmpleo\\Controllers\\OfertaEmpleosController.cs",
-              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Controllers\\OfertaEmpleosController.cs",
-              "RelativeToolTip": "PlataformaEmpleo\\Controllers\\OfertaEmpleosController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-14T03:59:36.75Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\OfertaEmpleos\\Details.cshtml",
-              "RelativeDocumentMoniker": "PlataformaEmpleo\\Views\\OfertaEmpleos\\Details.cshtml",
-              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\OfertaEmpleos\\Details.cshtml",
-              "RelativeToolTip": "PlataformaEmpleo\\Views\\OfertaEmpleos\\Details.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-14T03:59:30.835Z"
+              "Title": "CVsController.cs",
+              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Controllers\\CVsController.cs",
+              "RelativeDocumentMoniker": "PlataformaEmpleo\\Controllers\\CVsController.cs",
+              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Controllers\\CVsController.cs",
+              "RelativeToolTip": "PlataformaEmpleo\\Controllers\\CVsController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T09:34:51.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CV.cs",
+              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Models\\CV.cs",
+              "RelativeDocumentMoniker": "PlataformaEmpleo\\Models\\CV.cs",
+              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Models\\CV.cs",
+              "RelativeToolTip": "PlataformaEmpleo\\Models\\CV.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T09:34:40.352Z",
+              "EditorCaption": ""
             }
           ]
         }

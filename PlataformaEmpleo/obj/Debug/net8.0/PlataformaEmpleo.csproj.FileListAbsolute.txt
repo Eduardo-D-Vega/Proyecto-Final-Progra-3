@@ -243,6 +243,7 @@ C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpl
 C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpleo\obj\Debug\net8.0\PlataformaEmpleo.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpleo\obj\Debug\net8.0\PlataformaEmpleo.RazorAssemblyInfo.cache
 C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpleo\obj\Debug\net8.0\PlataformaEmpleo.RazorAssemblyInfo.cs
+C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpleo\obj\Debug\net8.0\PlataformaEmpleo.sourcelink.json
 C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpleo\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpleo\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\abiga\Downloads\Programación III\Proyectos\TrabajoFinal\PlataformaEmpleo\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
