@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\models\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\models\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\controllers\\cvscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\controllers\\cvscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\documents\\cvdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\documents\\cvdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,27 +47,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CVsController.cs",
-              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Controllers\\CVsController.cs",
-              "RelativeDocumentMoniker": "PlataformaEmpleo\\Controllers\\CVsController.cs",
-              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Controllers\\CVsController.cs",
-              "RelativeToolTip": "PlataformaEmpleo\\Controllers\\CVsController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Program.cs",
+              "RelativeDocumentMoniker": "PlataformaEmpleo\\Program.cs",
+              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Program.cs",
+              "RelativeToolTip": "PlataformaEmpleo\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAYwCQAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T09:34:51.088Z",
+              "WhenOpened": "2025-12-05T04:42:43.563Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CV.cs",
-              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Models\\CV.cs",
-              "RelativeDocumentMoniker": "PlataformaEmpleo\\Models\\CV.cs",
-              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Models\\CV.cs",
-              "RelativeToolTip": "PlataformaEmpleo\\Models\\CV.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "PlataformaEmpleo\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "PlataformaEmpleo\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T09:34:40.352Z",
+              "WhenOpened": "2025-12-05T04:37:35.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CvDocument.cs",
+              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Documents\\CvDocument.cs",
+              "RelativeDocumentMoniker": "PlataformaEmpleo\\Documents\\CvDocument.cs",
+              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Documents\\CvDocument.cs",
+              "RelativeToolTip": "PlataformaEmpleo\\Documents\\CvDocument.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswBIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T04:27:45.414Z",
               "EditorCaption": ""
             }
           ]

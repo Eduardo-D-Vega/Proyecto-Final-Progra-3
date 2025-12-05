@@ -1,14 +1,25 @@
-ï»¿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using QuestPDF.Infrastructure;
 using PlataformaEmpleo.Data;
+using Microsoft.AspNetCore.Identity;
+using PlataformaEmpleo.Models;
+
+QuestPDF.Settings.License = LicenseType.Community; // Configurar la licencia de QuestPDF
+
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContext' not found.")));
+
+builder.Services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+app.MapRazorPages(); // Mapeo de las páginas Razor
 
 //Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

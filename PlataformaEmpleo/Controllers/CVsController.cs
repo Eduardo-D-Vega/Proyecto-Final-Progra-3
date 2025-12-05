@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlataformaEmpleo.Data;
+using PlataformaEmpleo.Documents;
 using PlataformaEmpleo.Models;
+using QuestPDF.Fluent;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
+    [Authorize]
     public class CVsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -87,6 +91,39 @@ namespace PlataformaEmpleo.Controllers
             ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "IdCandidato", cV.CandidatoId);
             return View(cV);
         }
+
+
+        //método para generar el pdf del cv
+        [HttpGet]
+        public async Task<ActionResult> PDF(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            //
+            var cv = await _context.CV
+                .Include(x => x.Candidato)
+                .FirstOrDefaultAsync(x => x.IdCV == id);
+
+            if (cv == null)
+                return NotFound();
+
+            try
+            {
+                //
+                var document = new CvDocument(cv);
+                var pdfBytes = document.GeneratePdf(); //→ Genera el PDF como un arreglo de bytes, método de QuestPDF
+                var fileName = $"CV_{cv.Candidato.Nombre}_{cv.Candidato?.Apellido}.pdf"
+                    .Replace(" ", "_"); //→ Reemplaza espacios por guiones bajos
+
+                return File(pdfBytes, "application/pdf", fileName);
+            }
+            catch (Exception ex)
+            {
+                return Content($"ERROR: {ex.Message}<br><br>{ex.StackTrace}", "text/html");
+            }
+        }
+
 
         // GET: CVs/Edit/5
         public async Task<IActionResult> Edit(int? id)
