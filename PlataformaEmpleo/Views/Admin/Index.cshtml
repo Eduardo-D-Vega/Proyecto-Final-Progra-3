@@ -1,0 +1,71 @@
+﻿@model PlataformaEmpleo.Controllers.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Panel de Administración";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p class="text-muted">Resumen rápido del sistema</p>
+
+<div class="row g-3 mt-3">
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Candidatos</h5>
+                <p class="card-text display-6">@Model.TotalCandidatos</p>
+                <a class="btn btn-outline-primary" asp-controller="Candidatos" asp-action="Index">Gestionar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">CVs</h5>
+                <p class="card-text display-6">@Model.TotalCVs</p>
+                <a class="btn btn-outline-primary" asp-controller="Cvs" asp-action="Index">Gestionar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ofertas</h5>
+                <p class="card-text display-6">@Model.TotalOfertaEmpleos</p>
+                <a class="btn btn-outline-primary" asp-controller="OfertaEmpleos" asp-action="Index">Gestionar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ofertas-Postulaciones</h5>
+                <p class="card-text display-6">@Model.TotalOfertaPostulaciones</p>
+                <a class="btn btn-outline-primary" asp-controller="OfertaPostulaciones" asp-action="Index">Gestionar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Postulaciones</h5>
+                <p class="card-text display-6">@Model.TotalPostulaciones</p>
+                <a class="btn btn-outline-primary" asp-controller="Postulaciones" asp-action="Index">Gestionar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Reclutadores</h5>
+                <p class="card-text display-6">@Model.TotalReclutadores</p>
+                <a class="btn btn-outline-primary" asp-controller="Reclutadores" asp-action="Index">Gestionar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
