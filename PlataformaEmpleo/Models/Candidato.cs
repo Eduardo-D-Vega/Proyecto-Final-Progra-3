@@ -21,7 +21,7 @@ namespace PlataformaEmpleo.Models
 
         //Propiedad de navegacion para la relación MUCHOS a MUCHOS con Postulacion
         [ValidateNever]
-        public ICollection<Postulacion> postulaciones { get; set; }
+        public ICollection<Postulacion> Postulacion { get; set; }
 
 
         [NotMapped] //→ indica que esta propiedad no se guarda en la BD

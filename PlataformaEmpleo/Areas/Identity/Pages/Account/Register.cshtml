@@ -1,0 +1,48 @@
+﻿@page
+@model RegisterModel
+@{
+    Layout = "/Areas/Identity/Pages/Shared/Index.cshtml";
+    ViewData["Title"] = "Register";
+}
+
+<div class="page_wrapper">
+    <div class="table" id="outer_table">
+        <div class="table_cell half">
+            <div class="content">
+
+                <h2>Create Account</h2>
+                <hr />
+                <br />
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <label>Nombre</label><br />
+                    <input asp-for="Input.Nombre" placeholder="Nombre" class="form-input" />
+                    <span asp-validation-for="Input.Nombre" class="text-danger"></span><br />
+                    <label>Email</label><br />
+                    <input asp-for="Input.Email" placeholder="Email" class="form-input" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span><br />
+                    <label>Password</label><br />
+                    <input asp-for="Input.Password" type="password" placeholder="••••••••" class="form-input" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span><br />
+                    <label>Confirm Password</label><br />
+                    <input asp-for="Input.ConfirmPassword" type="password" placeholder="••••••••" class="form-input" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span><br />
+                    <input type="submit" value="Create Account" class="button-submit" />
+                </form>
+
+                <br />
+                <a asp-page="./Login" class="small-text">Already have an account? Login →</a>
+
+            </div>
+        </div>
+
+        <div class="table_cell half right">
+            <h3>Join the platform</h3>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

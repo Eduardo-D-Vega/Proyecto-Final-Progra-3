@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlataformaEmpleo.Data;
 using PlataformaEmpleo.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
+    [Authorize]
     public class OfertaEmpleosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -35,8 +36,9 @@ namespace PlataformaEmpleo.Controllers
             }
 
             var ofertaEmpleo = await _context.OfertaEmpleo
-                .Include(o => o.Reclutador)
-                //.Include(o => o.postulacionesEmpleos)
+                .Include(o => o.Postulaciones) //lista de ofertaEmpelo a OfertaPostulacion
+                    .ThenInclude(p => p.Postulaciones) 
+                    .ThenInclude(p => p.Candidato)
                 .FirstOrDefaultAsync(m => m.IdOferta == id);
             if (ofertaEmpleo == null)
             {

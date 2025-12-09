@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlataformaEmpleo.Data;
+using PlataformaEmpleo.Documents;
 using PlataformaEmpleo.Models;
+using QuestPDF.Fluent;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
+    [Authorize]
     public class CVsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -48,7 +52,7 @@ namespace PlataformaEmpleo.Controllers
         // GET: CVs/Create
         public IActionResult Create()
         {
-            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre");
+            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto");
             return View();
         }
 
@@ -57,8 +61,22 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCV,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,RutaArchivo,CandidatoId")] CV cV)
+        public async Task<IActionResult> Create([Bind("IdCV, PerfilProfesional,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,Certificaciones,CandidatoId")] CV cV)
         {
+            //validación para evitar un cv duplicado por candidato
+            var CvExistente = await _context.CV
+                .FirstOrDefaultAsync(x => x.CandidatoId == cV.CandidatoId);
+            
+            if (CvExistente != null)
+            {
+                //evita que el programa se caiga
+                ModelState.AddModelError("", "El candidato ya tiene un CV registrado. Puede editar el cv ya existente");
+
+                //se devuelve a la vista create con el error
+                ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto", cV.CandidatoId);
+                return View(cV);
+            }
+
             try
             {
                 _context.Add(cV);
@@ -74,6 +92,39 @@ namespace PlataformaEmpleo.Controllers
             return View(cV);
         }
 
+
+        //método para generar el pdf del cv
+        [HttpGet]
+        public async Task<ActionResult> PDF(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            //
+            var cv = await _context.CV
+                .Include(x => x.Candidato)
+                .FirstOrDefaultAsync(x => x.IdCV == id);
+
+            if (cv == null)
+                return NotFound();
+
+            try
+            {
+                //
+                var document = new CvDocument(cv);
+                var pdfBytes = document.GeneratePdf(); //→ Genera el PDF como un arreglo de bytes, método de QuestPDF
+                var fileName = $"CV_{cv.Candidato.Nombre}_{cv.Candidato?.Apellido}.pdf"
+                    .Replace(" ", "_"); //→ Reemplaza espacios por guiones bajos
+
+                return File(pdfBytes, "application/pdf", fileName);
+            }
+            catch (Exception ex)
+            {
+                return Content($"ERROR: {ex.Message}<br><br>{ex.StackTrace}", "text/html");
+            }
+        }
+
+
         // GET: CVs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -87,7 +138,7 @@ namespace PlataformaEmpleo.Controllers
             {
                 return NotFound();
             }
-            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre", cV.CandidatoId);
+            ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto", cV.CandidatoId);
             return View(cV);
         }
 
@@ -96,7 +147,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCV,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,RutaArchivo,CandidatoId")] CV cV)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCV,PerfilProfesional,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,Certificaciones,CandidatoId")] CV cV)
         {
             if (id != cV.IdCV)
             {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PlataformaEmpleo.Migrations
 {
     /// <inheritdoc />
-    public partial class primeraMigracion : Migration
+    public partial class PrimeraMigracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,10 +17,10 @@ namespace PlataformaEmpleo.Migrations
                 {
                     IdCandidato = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    telefono = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    ciudad = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,8 +33,8 @@ namespace PlataformaEmpleo.Migrations
                 {
                     IdReclutador = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombreEmpresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    correoEmpresa = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NombreEmpresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CorreoEmpresa = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,11 +47,12 @@ namespace PlataformaEmpleo.Migrations
                 {
                     IdCV = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    PerfilProfesional = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FormacionAcademica = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExperienciaLaboral = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Habilidades = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Idiomas = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    rutaArchivo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Certificaciones = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CandidatoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -63,6 +64,27 @@ namespace PlataformaEmpleo.Migrations
                         principalTable: "Candidato",
                         principalColumn: "IdCandidato",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Postulacion",
+                columns: table => new
+                {
+                    IdPostulacion = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FechaPostulacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EstadoPostulacion = table.Column<int>(type: "int", nullable: false),
+                    IdCandidato = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Postulacion", x => x.IdPostulacion);
+                    table.ForeignKey(
+                        name: "FK_Postulacion_Candidato_IdCandidato",
+                        column: x => x.IdCandidato,
+                        principalTable: "Candidato",
+                        principalColumn: "IdCandidato",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -79,8 +101,7 @@ namespace PlataformaEmpleo.Migrations
                     FechaCierre = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TipoContrato = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Salario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Empresa = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Horario = table.Column<int>(type: "int", nullable: false),
+                    Horario = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReclutadorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -92,33 +113,6 @@ namespace PlataformaEmpleo.Migrations
                         principalTable: "Reclutador",
                         principalColumn: "IdReclutador",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Postulacion",
-                columns: table => new
-                {
-                    IdPostulacion = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FechaPostulacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EstadoPostulacion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdCandidato = table.Column<int>(type: "int", nullable: false),
-                    OfertaEmpleoIdOferta = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Postulacion", x => x.IdPostulacion);
-                    table.ForeignKey(
-                        name: "FK_Postulacion_Candidato_IdCandidato",
-                        column: x => x.IdCandidato,
-                        principalTable: "Candidato",
-                        principalColumn: "IdCandidato",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Postulacion_OfertaEmpleo_OfertaEmpleoIdOferta",
-                        column: x => x.OfertaEmpleoIdOferta,
-                        principalTable: "OfertaEmpleo",
-                        principalColumn: "IdOferta");
                 });
 
             migrationBuilder.CreateTable(
@@ -138,7 +132,7 @@ namespace PlataformaEmpleo.Migrations
                         column: x => x.IdOferta,
                         principalTable: "OfertaEmpleo",
                         principalColumn: "IdOferta",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OfertaPostulacion_Postulacion_IdPostulacion",
                         column: x => x.IdPostulacion,
@@ -172,11 +166,6 @@ namespace PlataformaEmpleo.Migrations
                 name: "IX_Postulacion_IdCandidato",
                 table: "Postulacion",
                 column: "IdCandidato");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Postulacion_OfertaEmpleoIdOferta",
-                table: "Postulacion",
-                column: "OfertaEmpleoIdOferta");
         }
 
         /// <inheritdoc />
@@ -189,16 +178,16 @@ namespace PlataformaEmpleo.Migrations
                 name: "OfertaPostulacion");
 
             migrationBuilder.DropTable(
-                name: "Postulacion");
-
-            migrationBuilder.DropTable(
-                name: "Candidato");
-
-            migrationBuilder.DropTable(
                 name: "OfertaEmpleo");
 
             migrationBuilder.DropTable(
+                name: "Postulacion");
+
+            migrationBuilder.DropTable(
                 name: "Reclutador");
+
+            migrationBuilder.DropTable(
+                name: "Candidato");
         }
     }
 }

@@ -1,16 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace PlataformaEmpleo.Models
 {
-    public class Usuario
+    public class Usuario : IdentityUser
     {
-        [Key]
-        public int Id { get; set; } // PK
-        public string nombreUsuario { get; set; }
-        public string correo { get; set; }
-        public string contrasena { get; set; }
-        public string rol { get; set; }
-
-        //sin controlador
+        [Required]
+        public string Nombre { get; set; }
     }
 }

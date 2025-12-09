@@ -78,33 +78,43 @@
         </dd>
     </dl>
 </div>
+
 <div>
     <h4>Candidatos</h4>
+
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    Candidatos
+                    NombreCompleto
                 </th>
+                <th>
+                    Telefono
+                </th>
+                <th>
+                    Ciudad
+                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.postulacionesEmpleos)
+            @foreach (var item in Model.Postulaciones)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.FechaPostulacion)
+                        @Html.DisplayFor(modelItem => item.Postulaciones.Candidato.NombreCompleto)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.EstadoPostulacion)
+                        @Html.DisplayFor(modelItem => item.Postulaciones.Candidato.Telefono)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Candidato.Nombre)
+                        @Html.DisplayFor(modelItem => item.Postulaciones.Candidato.Ciudad)
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+
 </div>
 
 

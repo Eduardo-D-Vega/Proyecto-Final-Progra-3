@@ -8,11 +8,12 @@ namespace PlataformaEmpleo.Models
     {
         [Key]
         public int IdCV { get; set; } //PK
+        public string PerfilProfesional { get; set; }
         public string FormacionAcademica { get; set; }
         public string ExperienciaLaboral { get; set; }
         public string Habilidades { get; set; }
         public string Idiomas { get; set; }
-        public string RutaArchivo { get; set; }
+        public string Certificaciones { get; set; }
 
         public int CandidatoId { get; set; } //FK
         [ForeignKey("CandidatoId")]

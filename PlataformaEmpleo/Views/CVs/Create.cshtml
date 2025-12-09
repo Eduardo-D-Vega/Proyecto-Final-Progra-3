@@ -13,6 +13,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label>Nombre del candidato</label>
+                <select asp-for="CandidatoId" class="form-control" asp-items="ViewBag.CandidatoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PerfilProfesional" class="control-label"></label>
+                <input asp-for="PerfilProfesional" class="form-control" />
+                <span asp-validation-for="PerfilProfesional" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="FormacionAcademica" class="control-label"></label>
                 <input asp-for="FormacionAcademica" class="form-control" />
                 <span asp-validation-for="FormacionAcademica" class="text-danger"></span>
@@ -33,13 +42,9 @@
                 <span asp-validation-for="Idiomas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RutaArchivo" class="control-label"></label>
-                <input asp-for="RutaArchivo" class="form-control" />
-                <span asp-validation-for="RutaArchivo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>Nombre del candidato</label>
-                <select asp-for="CandidatoId" class ="form-control" asp-items="ViewBag.CandidatoId"></select>
+                <label asp-for="Certificaciones" class="control-label"></label>
+                <input asp-for="Certificaciones" class="form-control" />
+                <span asp-validation-for="Certificaciones" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

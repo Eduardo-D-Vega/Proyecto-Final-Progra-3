@@ -8,7 +8,7 @@ namespace PlataformaEmpleo.Models
     {
         [Key]
         public int IdOferta { get; set; } // PK
-        [Required(ErrorMessage = "Debe ingresar un titulo para la oferta de empleo")]
+        [Required(ErrorMessage = "Debe ingresar el nombre del puesto")]
         public string Titulo { get; set; }
         [Required]
         public string Descripcion { get; set; }
@@ -33,8 +33,9 @@ namespace PlataformaEmpleo.Models
         [ValidateNever]
         public Reclutador Reclutador { get; set; }
 
-        //relacion muchos a muchos con Postulacion
-        [ValidateNever]
-        public ICollection<Postulacion> postulacionesEmpleos { get; set; } = new List<Postulacion>();
+        //propiedad de navegacion a tabla intermedia OfertaPostulacion
+         [ValidateNever]
+        public ICollection<OfertaPostulacion> Postulaciones { get; set; }
+
     }
 }
