@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\wwwroot\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\wwwroot\\css\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|c:\\users\\abiga\\downloads\\programaci\u00F3n iii\\proyectos\\trabajofinal\\plataformaempleo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78F5BFBB-CCC2-41EC-8B51-E4957C8CE0C3}|PlataformaEmpleo\\PlataformaEmpleo.csproj|solutionrelative:plataformaempleo\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,40 +43,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "PlataformaEmpleo\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\Home\\Index.cshtml*",
-              "RelativeToolTip": "PlataformaEmpleo\\Views\\Home\\Index.cshtml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T20:46:46.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "PlataformaEmpleo\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "PlataformaEmpleo\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-08T18:25:23.913Z",
+              "WhenOpened": "2025-12-09T06:35:21.274Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "main.css",
-              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\wwwroot\\css\\main.css",
-              "RelativeDocumentMoniker": "PlataformaEmpleo\\wwwroot\\css\\main.css",
-              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\wwwroot\\css\\main.css",
-              "RelativeToolTip": "PlataformaEmpleo\\wwwroot\\css\\main.css",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAACQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-12-08T18:24:48.026Z",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "PlataformaEmpleo\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\abiga\\Downloads\\Programaci\u00F3n III\\Proyectos\\TrabajoFinal\\PlataformaEmpleo\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "PlataformaEmpleo\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T20:46:46.326Z",
               "EditorCaption": ""
             }
           ]
