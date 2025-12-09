@@ -5,7 +5,7 @@ using PlataformaEmpleo.Data; // ajusta si tu DbContext está en otro namespace
 
 namespace PlataformaEmpleo.Controllers
 {
-    [Authorize] // evita que usuarios anónimos accedan
+    
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
