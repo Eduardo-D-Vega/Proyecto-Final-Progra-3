@@ -8,7 +8,7 @@ namespace PlataformaEmpleo.Models
     {
         [Key]
         public int IdOferta { get; set; } // PK
-        [Required(ErrorMessage = "Debe ingresar un titulo para la oferta de empleo")]
+        [Required(ErrorMessage = "Debe ingresar el nombre del puesto")]
         public string Titulo { get; set; }
         [Required]
         public string Descripcion { get; set; }

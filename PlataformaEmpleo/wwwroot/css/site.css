@@ -20,3 +20,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+/*para el fondo de la pagina
+.body-background {
+    background-image: url('/Templates/descarga.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+*/

@@ -63,6 +63,9 @@ namespace PlataformaEmpleo.Controllers
             ViewData["EstadoPostulacion"] = estadoPostulaciones;
 
             ViewData["IdCandidato"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto");
+            //
+            ViewBag.IdOferta = new SelectList(_context.OfertaEmpleo, "IdOferta", "Titulo");
+            ViewBag.EstadoPostulacion = new SelectList(Enum.GetValues(typeof(TipoPostulacion)));
             return View();
         }
 
@@ -75,16 +78,50 @@ namespace PlataformaEmpleo.Controllers
         {
             try
             {
+                //se guardar la postulación
                 _context.Add(postulacion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                 
+                //se lee el IdOferta que envia el usuario en el formulario
+                var idOfertaString = Request.Form["IdOferta"].FirstOrDefault();
+
+                //Si ese valor existe y es un numero válido significa que el usuario selecciono una oferta
+                if (!string.IsNullOrEmpty(idOfertaString) && int.TryParse(idOfertaString, out int idOferta))
+                {
+                    //se crea el registro en la tabla intermedia
+                    var ofertaPost = new OfertaPostulacion
+                    {
+                        IdPostulacion = postulacion.IdPostulacion,
+                        IdOferta = idOferta
+                    };
+
+                    _context.Add(ofertaPost);
+                    await _context.SaveChangesAsync();
+                }
+                //si el usuario no selecciona una oferta
+                else
+                {
+                    //si la postulación se guarda ahora se borra
+                    _context.Postulacion.Remove(postulacion);
+                    await _context.SaveChangesAsync();
+                    
+                    ModelState.AddModelError("", "Seleccione una oferta para poder postularse");
+                    
+                    
+                    ViewData["IdCandidato"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre", postulacion.IdCandidato);
+                    ViewData["IdOferta"] = new SelectList(_context.OfertaEmpleo, "IdOferta", "Titulo");
+                    return View(postulacion);
+                }
+                return RedirectToAction(nameof(Index)); 
             }
             catch
             {
                 throw;
             }
 
-            ViewData["IdCandidato"] = new SelectList(_context.Candidato, "IdCandidato", "IdCandidato", postulacion.IdCandidato);
+            //si algo falla se viene aqui y vuelve a cargar los selects list
+            ViewData["IdCandidato"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre", postulacion.IdCandidato);
+            ViewData["IdOferta"] = new SelectList(_context.OfertaEmpleo, "IdOferta", "Titulo");
             return View(postulacion);
         }
 

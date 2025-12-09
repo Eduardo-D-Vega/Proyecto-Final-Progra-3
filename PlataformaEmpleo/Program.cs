@@ -32,6 +32,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseStaticFiles(); // Habilitar el uso de archivos estáticos
 app.UseRouting();
 
 app.UseAuthorization();
