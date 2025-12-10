@@ -38,7 +38,7 @@ namespace PlataformaEmpleo.Data
                 .HasOne(p => p.Candidato)
                 .WithMany(o => o.Postulacion)
                 .HasForeignKey(op => op.IdCandidato)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade); //→ si se elimna candidato se eliminan sus postulaciones
 
             base.OnModelCreating(modelBuilder);
         }

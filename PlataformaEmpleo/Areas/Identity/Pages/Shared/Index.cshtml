@@ -8,20 +8,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>@ViewData["Title"] - PlataformaEmpleo</title>
 
-    <!-- css principal para auth -->
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 </head>
 <body class="auth-page">
 
-    <!--botón para Home-->
+    <!--boton para Home-->
     <div class = "top-nav">
             <a asp-controller="Home" asp-action="Index" class="home-btn"> Home </a>
     </div>
 
-    <!-- el login y register se renderiza dentro -->
     @RenderBody()
 
-    <!-- deja que las vistan implementen script que es lo de validación y show password -->
+    <!-- deja que las vistan implementen script -->
     @RenderSection("Scripts", required: false)
 </body>
 </html>

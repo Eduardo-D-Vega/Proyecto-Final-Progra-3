@@ -4,57 +4,58 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="text-white-special">Crear Currículo</h1>
 
-<h4>CV</h4>
+<h4 class ="text-white-special">Ingrese su información</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label>Nombre del candidato</label>
+                <label class="text-white-special">Nombre del candidato</label>
                 <select asp-for="CandidatoId" class="form-control" asp-items="ViewBag.CandidatoId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="PerfilProfesional" class="control-label"></label>
+                <label class="text-white-special">Perfil Profesional</label>
                 <input asp-for="PerfilProfesional" class="form-control" />
                 <span asp-validation-for="PerfilProfesional" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FormacionAcademica" class="control-label"></label>
+                <label class="text-white-special">Formación academica</label>                
                 <input asp-for="FormacionAcademica" class="form-control" />
                 <span asp-validation-for="FormacionAcademica" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ExperienciaLaboral" class="control-label"></label>
+                <label class="text-white-special">Experiencia Laboral</label>
                 <input asp-for="ExperienciaLaboral" class="form-control" />
                 <span asp-validation-for="ExperienciaLaboral" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Habilidades" class="control-label"></label>
+                <label class="text-white-special">Habilidades</label>
                 <input asp-for="Habilidades" class="form-control" />
                 <span asp-validation-for="Habilidades" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Idiomas" class="control-label"></label>
+                <label class="text-white-special">Idiomas</label>
                 <input asp-for="Idiomas" class="form-control" />
                 <span asp-validation-for="Idiomas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Certificaciones" class="control-label"></label>
+                <label class="text-white-special">Certificaciones</label>
                 <input asp-for="Certificaciones" class="form-control" />
                 <span asp-validation-for="Certificaciones" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-contraste" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="CVs" asp-action="Index" class="text-white-special">Volver a la lista</a>
 </div>
 
 @section Scripts {

@@ -4,12 +4,12 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-white-special">Detalles de la oferta laboral</h1>
 
 <div>
-    <h4>OfertaEmpleo</h4>
+    <h4 class="text-white-special">Oferta de empleo</h4>
     <hr />
-    <dl class="row">
+    <dl class="text-white-special" = "row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
@@ -80,9 +80,9 @@
 </div>
 
 <div>
-    <h4>Candidatos</h4>
+    <h4 class="text-white-special">Candidatos</h4>
 
-    <table class="table">
+    <table class="text-white-special" ="table">
         <thead>
             <tr>
                 <th>
@@ -117,8 +117,7 @@
 
 </div>
 
-
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdOferta">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.IdOferta" class="btn btn-contraste">Editar</a> |
+    <a asp-action="Index" class="text-white-special">Volver a la lista</a>
 </div>

@@ -90,7 +90,7 @@ namespace PlataformaEmpleo.Controllers
             {
                 return NotFound();
             }
-            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "IdReclutador", ofertaEmpleo.ReclutadorId);
+            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "NombreEmpresa", ofertaEmpleo.ReclutadorId);
             return View(ofertaEmpleo);
         }
 
@@ -126,7 +126,7 @@ namespace PlataformaEmpleo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "IdReclutador", ofertaEmpleo.ReclutadorId);
+            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "NombreEmpresa", ofertaEmpleo.ReclutadorId);
             return View(ofertaEmpleo);
         }
 

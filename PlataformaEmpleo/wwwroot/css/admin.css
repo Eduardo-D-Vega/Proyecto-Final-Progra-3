@@ -24,11 +24,11 @@ a {
 }
 
 .border-top {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #284970;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #284970;
 }
 
 .box-shadow {
@@ -48,3 +48,8 @@ button.accept-policy {
     line-height: 60px;
 }
 
+.navbar .nav-link.text-white-special {
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: 300;
+}

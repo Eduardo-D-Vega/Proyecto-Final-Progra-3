@@ -10,32 +10,32 @@
         <div class="table_cell half">
             <div class="content">
 
-                <h2>Welcome Back</h2>
+                <h2 class="text-white-special">Bienvenido de nuevo</h2>
                 <hr />
                 <br />
 
                 <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                    <label>Email</label><br />
+                    <label class="text-white-special">Correo</label>
                     <input asp-for="Input.Email" placeholder="Email" class="form-input" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span><br />
 
-                    <label>Password</label><br />
+                    <label class="text-white-special">Contraseña</label>
                     <input asp-for="Input.Password" type="password" placeholder="••••••••" class="form-input" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span><br />
 
-                    <input type="submit" value="Login" class="button-submit" />
+                    <input type="submit" value="Iniciar sesión" class="button-submit" />
                 </form>
 
                 <br />
-                <a asp-page="./Register" class="small-text">Don't have an account? Register →</a>
+                <a asp-page="./Register" class="small-text text-white-special">¿No tienes una cuenta? Regístrate →</a>
 
             </div>
         </div>
 
         <div class="table_cell half right">
-            <h3>Your secure platform</h3>
+            <h3 class="text-white-special">Tu plataforma segura</h3>
         </div>
     </div>
 </div>

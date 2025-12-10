@@ -4,12 +4,12 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-white-special">Detalles del currículo</h1>
 
 <div>
-    <h4>CV</h4>
+    <h4 class ="text-white-special">Información CV</h4>
     <hr />
-    <dl class="row">
+    <dl class="text-white-special" ="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Candidato)
         </dt>
@@ -59,6 +59,6 @@
        class="btn btn-sm btn-danger">
         Desgarcar PDF
     </a>
-    <a asp-action="Edit" asp-route-id="@Model?.IdCV">Edit</a> 
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.IdCV" class="btn btn-contraste">Editar</a> |
+    <a asp-action="Index" class="text-white-special">Volver a la lista</a>
 </div>

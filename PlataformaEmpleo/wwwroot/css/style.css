@@ -1,3 +1,52 @@
+﻿/* Fonts */
+:root {
+    --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --heading-font: "Jost", sans-serif;
+    --nav-font: "Poppins", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root {
+    --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+    --default-color: #192a48; /* Default color used for the majority of the text content across the entire website */
+    --heading-color: #1a4081; /* Color for headings, subheadings and title throughout the website */
+    --accent-color: #2e6c89; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+    --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+    --contrast-color: black; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+    --nav-color: #397896; /* The default color of the main navmenu links */
+    --nav-hover-color: rgba(0, 0, 0, 0.1); /* Applied to main navmenu links when they are hovered over or active */
+    --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+    --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+    --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
+    --nav-dropdown-hover-color: #47b2e4; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+    --background-color: #f5f6f8;
+    --surface-color: #ffffff;
+}
+
+.dark-background {
+    --background-color: #37517e;
+    --default-color: #ffffff;
+    --heading-color: #ffffff;
+    --surface-color: #4668a2;
+    --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+    scroll-behavior: smooth;
+}
+
+
+/* >>>>>> diseño para login y register  <<<<<<< */
 a {
     color: #fff;
 }
@@ -9,14 +58,14 @@ a {
 h2 {
     font-size: 40px;
     margin: 0px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 h3 {
     font-size: 20px;
     text-align: right;
     margin: 0px;
-    font-weight: 200;
+    font-weight: 300;
 }
 
 body {
@@ -26,15 +75,53 @@ body {
     background-attachment: fixed;
     color: #fff;
     font-family: 'Segoe UI', 'Sans Serif Collection';
-    font-weight: 100;
+    font-weight: 200;
     -webkit-font-smoothing: antialiased;
-    margin: 0px;
+    margin: 0px; /*sin marguenes */
 }
 
-hr {
+hr { /*linea horizontal*/
     width: 40%;
     border: 1px solid #fff;
 }
+
+/*se sobrescribe cualquier color que venga de Bootstrap o la plantilla.*/
+.text-white-special {
+    color: #fff !important;
+}
+
+/*diseño para el botón create */
+.btn-contraste {
+    background-color: #5672a1;
+    color: #fff;
+    border: none;
+    padding: 0.25rem 0.75rem;
+}
+    .btn-contraste:hover {
+        background-color: #ff6347; 
+        color: #fff;
+    }
+
+.h3-eliminar {
+    text-align: right; /* lo alinea a la derecha */
+    font-size: 1.2rem;
+    font-weight: 500; 
+    margin-top: 0.5rem; /* espacio superior si quieres separarlo de los datos */
+    color: #fff !important;
+}
+
+.link-accion {
+    color: #18475c; 
+    font-weight: bold; 
+    text-decoration: none; /*quita el subrayado */
+}
+
+    .link-accion:hover {
+        color: #9fbeeb; /* un azul más claro al pasar el mouse */
+        text-decoration: underline; /*subraya al pasar el mouse */
+    }
+
+
 
 .page_wrapper {
     margin-top: 10%;
@@ -42,7 +129,7 @@ hr {
     width: 100%;
 }
 
-.header {
+.header { /*linea blanca bajo el encabezado */
     border-bottom: 1px solid #fff;
     width: 100%;
     padding: 10px;
@@ -111,7 +198,7 @@ hr {
 .footer {
     padding-top: 20px;
     border-top: 1px solid #fff;
-    width: 30%;
+    width: 10%;
     margin: 0px auto;
     margin-top: 100px;
 }
@@ -306,7 +393,7 @@ form {
     box-shadow: 0 0 5px rgba(13,110,253,0.3);
 }
 
-/*bot�n submit alineado con el resto */
+/*botón submit alineado con el resto */
 .page_wrapper .content input[type="submit"] {
     width: 25%;
     padding: 10px;
@@ -320,19 +407,18 @@ form {
     transition: 0.2s;
 }
 
-/* Hover del bot�n */
 .page_wrapper .content input[type="submit"]:hover {
     background: #222;
 }
 
-/* estilo del bot�n Home */
+/* estilo del botón Home */
 .top-nav {
     position: absolute; 
     top: 20px;
     right: 30px;
 }
 
-/* dse�o del bot�n */
+/* dseño del botón */
 .home-btn {
     padding: 8px 16px;
     border-radius: 50px;
@@ -343,10 +429,947 @@ form {
     border: none;
 }
 
-    /* Efecto hover */
-    .home-btn:hover {
-        background: rgba(255,255,255,0.9);
-        color: #f1f1fa;
-        border-color: transparent;
-        cursor: pointer;
+ /* Efecto hover */
+.home-btn:hover {
+    background: rgba(255,255,255,0.9);
+    color: #f1f1fa;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+    color: var(--default-color); /*el color por defecto de toda la pagina*/
+    background-color: var(--background-color); /*el color de fondo*/
+    font-family: var(--default-font); /*define la fuente */
+    /*se manejan por defecto para poder modificarlo en el root ↑ */
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+    a:hover {
+        color: color-mix(in srgb, var(--accent-color), transparent 25%);
+        text-decoration: none;
     }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading-color);
+    font-family: var(--heading-font);
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+    --background-color: #3d4d6a;
+    --heading-color: #ffffff;
+    color: var(--default-color);
+    background-color: var(--background-color);
+    padding: 15px 0;
+    transition: all 0.5s;
+    z-index: 997;
+}
+
+    .header .logo {
+        line-height: 1;
+    }
+
+        .header .logo img {
+            max-height: 36px;
+            margin-right: 8px;
+        }
+
+        .header .logo h1 {
+            font-size: 30px;
+            margin: 0;
+            font-weight: 500;
+            color: var(--heading-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+    .header .btn-getstarted,
+    .header .btn-getstarted:focus {
+        color: var(--contrast-color);
+        background: var(--accent-color);
+        font-size: 14px;
+        padding: 8px 25px;
+        margin: 0 0 0 30px;
+        border-radius: 50px;
+        transition: 0.3s;
+    }
+
+        .header .btn-getstarted:hover,
+        .header .btn-getstarted:focus:hover {
+            color: var(--contrast-color);
+            background: color-mix(in srgb, var(--accent-color), transparent 15%);
+        }
+
+@media (max-width: 1200px) {
+    .header .logo {
+        order: 1;
+    }
+
+    .header .btn-getstarted {
+        order: 2;
+        margin: 0 15px 0 0;
+        padding: 6px 15px;
+    }
+
+    .header .navmenu {
+        order: 3;
+    }
+}
+
+/* Index Page Header
+------------------------------*/
+.index-page .header {
+    --background-color: rgba(255, 255, 255, 0);
+    --heading-color: #ffffff;
+    --nav-color: #ffffff;
+}
+
+/* Index Page Header on Scroll
+------------------------------*/
+.index-page.scrolled .header {
+    --background-color: rgba(40, 58, 90, 0.9);
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu 
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+@media (min-width: 1200px) {
+    .navmenu {
+        padding: 0;
+    }
+
+        .navmenu ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .navmenu li {
+            position: relative;
+        }
+
+        .navmenu a,
+        .navmenu a:focus {
+            color: var(--nav-color);
+            padding: 18px 15px;
+            font-size: 15px;
+            font-family: var(--nav-font);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+            .navmenu a i,
+            .navmenu a:focus i {
+                font-size: 12px;
+                line-height: 0;
+                margin-left: 5px;
+                transition: 0.3s;
+            }
+
+        .navmenu li:last-child a {
+            padding-right: 0;
+        }
+
+        .navmenu li:hover > a,
+        .navmenu .active,
+        .navmenu .active:focus {
+            color: var(--nav-hover-color);
+        }
+
+        .navmenu .dropdown ul {
+            margin: 0;
+            padding: 10px 0;
+            background: var(--nav-dropdown-background-color);
+            display: block;
+            position: absolute;
+            visibility: hidden;
+            left: 14px;
+            top: 130%;
+            opacity: 0;
+            transition: 0.3s;
+            border-radius: 4px;
+            z-index: 99;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        }
+
+            .navmenu .dropdown ul li {
+                min-width: 200px;
+            }
+
+            .navmenu .dropdown ul a {
+                padding: 10px 20px;
+                font-size: 15px;
+                text-transform: none;
+                color: var(--nav-dropdown-color);
+            }
+
+                .navmenu .dropdown ul a i {
+                    font-size: 12px;
+                }
+
+                .navmenu .dropdown ul a:hover,
+                .navmenu .dropdown ul .active:hover,
+                .navmenu .dropdown ul li:hover > a {
+                    color: var(--nav-dropdown-hover-color);
+                }
+
+        .navmenu .dropdown:hover > ul {
+            opacity: 1;
+            top: 100%;
+            visibility: visible;
+        }
+
+        .navmenu .dropdown .dropdown ul {
+            top: 0;
+            left: -90%;
+            visibility: hidden;
+        }
+
+        .navmenu .dropdown .dropdown:hover > ul {
+            opacity: 1;
+            top: 0;
+            left: -100%;
+            visibility: visible;
+        }
+
+        .navmenu .megamenu {
+            position: static;
+        }
+
+            .navmenu .megamenu ul {
+                margin: 0;
+                padding: 10px;
+                background: var(--nav-dropdown-background-color);
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+                position: absolute;
+                top: 130%;
+                left: 0;
+                right: 0;
+                visibility: hidden;
+                opacity: 0;
+                display: flex;
+                transition: 0.3s;
+                border-radius: 4px;
+                z-index: 99;
+            }
+
+                .navmenu .megamenu ul li {
+                    flex: 1;
+                }
+
+                    .navmenu .megamenu ul li a,
+                    .navmenu .megamenu ul li:hover > a {
+                        padding: 10px 20px;
+                        font-size: 15px;
+                        color: var(--nav-dropdown-color);
+                    }
+
+                        .navmenu .megamenu ul li a:hover,
+                        .navmenu .megamenu ul li .active,
+                        .navmenu .megamenu ul li .active:hover {
+                            color: var(--nav-dropdown-hover-color);
+                        }
+
+            .navmenu .megamenu:hover > ul {
+                opacity: 1;
+                top: 100%;
+                visibility: visible;
+            }
+
+        .navmenu .dd-box-shadow {
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        }
+}
+
+
+/*--------------------------------------------------------------
+# Preloader   Para la pantalla de carga
+--------------------------------------------------------------*/
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    overflow: hidden;
+    background: var(--background-color);
+    transition: all 0.6s ease-out;
+}
+
+    #preloader:before {
+        content: "";
+        position: fixed;
+        top: calc(50% - 30px);
+        left: calc(50% - 30px);
+        border: 6px solid #ffffff;
+        border-color: var(--accent-color) transparent var(--accent-color) transparent;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: animate-preloader 1.5s linear infinite;
+    }
+
+@keyframes animate-preloader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+    [data-aos-delay] {
+        transition-delay: 0 !important;
+    }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs  AQUI
+--------------------------------------------------------------*/
+.page-title {
+    --background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+    color: var(--default-color);
+    background-color: var(--background-color);
+    padding: 20px 0;
+    position: relative;
+}
+
+    .page-title h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .page-title .breadcrumbs ol {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0 0 10px 0;
+        margin: 0;
+        font-size: 14px;
+    }
+
+        .page-title .breadcrumbs ol li + li {
+            padding-left: 10px;
+        }
+
+            .page-title .breadcrumbs ol li + li::before {
+                content: "/";
+                display: inline-block;
+                padding-right: 10px;
+                color: color-mix(in srgb, var(--default-color), transparent 70%);
+            }
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+    color: var(--default-color);
+    background-color: var(--background-color);
+    padding: 60px 0;
+    scroll-margin-top: 88px;
+    overflow: clip;
+}
+
+@media (max-width: 1199px) {
+
+    section,
+    .section {
+        scroll-margin-top: 66px;
+    }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+    text-align: center;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+    .section-title h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+        .section-title h2:before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 160px;
+            height: 1px;
+            background: color-mix(in srgb, var(--default-color), transparent 60%);
+            left: 0;
+            right: 0;
+            bottom: 1px;
+            margin: auto;
+        }
+
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+    .section-title p {
+        margin-bottom: 0;
+    }
+
+/*--------------------------------------------------------------
+# Hero Section   
+--------------------------------------------------------------*/
+.hero {
+    width: 100%;
+    min-height: 80vh;
+    position: relative;
+    padding: 120px 0 60px 0;
+    display: flex;
+    align-items: center;
+}
+
+    .hero h1 {
+        margin: 0;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 56px;
+    }
+
+    .hero p {
+        color: color-mix(in srgb, var(--default-color), transparent 30%);
+        margin: 5px 0 30px 0;
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    .hero .btn-get-started {
+        color: var(--contrast-color);
+        background: var(--accent-color);
+        font-family: var(--heading-font);
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 10px 28px 12px 28px;
+        border-radius: 50px;
+        transition: 0.5s;
+    }
+
+        .hero .btn-get-started:hover {
+            color: var(--contrast-color);
+            background: color-mix(in srgb, var(--accent-color), transparent 15%);
+        }
+
+    .hero .btn-watch-video {
+        font-size: 16px;
+        transition: 0.5s;
+        margin-left: 25px;
+        color: var(--default-color);
+        font-weight: 600;
+    }
+
+        .hero .btn-watch-video i {
+            color: var(--contrast-color);
+            font-size: 32px;
+            transition: 0.3s;
+            line-height: 0;
+            margin-right: 8px;
+        }
+
+        .hero .btn-watch-video:hover {
+            color: var(--accent-color);
+        }
+
+            .hero .btn-watch-video:hover i {
+                color: color-mix(in srgb, var(--accent-color), transparent 15%);
+            }
+
+    .hero .animated {
+        animation: up-down 2s ease-in-out infinite alternate-reverse both;
+    }
+
+@media (max-width: 640px) {
+    .hero h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+
+    .hero .btn-get-started,
+    .hero .btn-watch-video {
+        font-size: 13px;
+    }
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about ul {
+    list-style: none;
+    padding: 0;
+}
+
+    .about ul li {
+        padding-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .about ul i {
+        font-size: 20px;
+        padding-right: 4px;
+        color: var(--accent-color);
+    }
+
+.about .read-more {
+    color: var(--accent-color);
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 8px 28px;
+    border-radius: 5px;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--accent-color);
+}
+
+    .about .read-more i {
+        font-size: 18px;
+        margin-left: 5px;
+        line-height: 0;
+        transition: 0.3s;
+    }
+
+    .about .read-more:hover {
+        background: var(--accent-color);
+        color: var(--contrast-color);
+    }
+
+        .about .read-more:hover i {
+            transform: translate(5px, 0);
+        }
+
+
+/*--------------------------------------------------------------
+# Services Section >>>>>>>>>>>>>>>>>>>>>>>>>>
+--------------------------------------------------------------*/
+.services .service-item {
+    background-color: var(--surface-color);
+    box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
+    padding: 50px 30px;
+    transition: all ease-in-out 0.4s;
+    height: 100%;
+}
+
+    .services .service-item .icon {
+        margin-bottom: 10px;
+    }
+
+        .services .service-item .icon i {
+            color: var(--accent-color);
+            font-size: 36px;
+            transition: 0.3s;
+        }
+
+    .services .service-item h4 {
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+        .services .service-item h4 a {
+            color: var(--heading-color);
+            transition: ease-in-out 0.3s;
+        }
+
+    .services .service-item p {
+        line-height: 24px;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+    .services .service-item:hover {
+        transform: translateY(-10px);
+    }
+
+        .services .service-item:hover h4 a {
+            color: var(--accent-color);
+        }
+
+/*--------------------------------------------------------------
+# Work Process Section EJEM: COMO POSTULARSE
+--------------------------------------------------------------*/
+.work-process .steps-item {
+    background: var(--surface-color);
+    border-radius: 20px;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 20px color-mix(in srgb, var(--default-color), transparent 92%);
+}
+
+    .work-process .steps-item .steps-image {
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+    }
+
+    .work-process .steps-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px color-mix(in srgb, var(--accent-color), transparent 85%);
+    }
+
+        .work-process .steps-item:hover .steps-number {
+            background: var(--accent-color);
+            color: var(--contrast-color);
+        }
+
+        .work-process .steps-item:hover .steps-image img {
+            transform: scale(1.1);
+        }
+
+.work-process .steps-image {
+    position: relative;
+    height: 280px;
+}
+
+    .work-process .steps-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+.work-process .steps-content {
+    position: relative;
+    padding: 40px 30px 30px;
+}
+
+    .work-process .steps-content .steps-number {
+        position: absolute;
+        left: 30px;
+        top: -30px;
+        width: 60px;
+        height: 60px;
+        background: var(--accent-color);
+        color: var(--contrast-color);
+        border-radius: 50%;
+        font-family: var(--heading-font);
+        font-size: 24px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .work-process .steps-content h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .work-process .steps-content p {
+        font-size: 15px;
+        color: color-mix(in srgb, var(--default-color), transparent 20%);
+        margin-bottom: 25px;
+    }
+
+.work-process .steps-features .feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+    .work-process .steps-features .feature-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .work-process .steps-features .feature-item i {
+        color: var(--accent-color);
+        font-size: 18px;
+        margin-right: 10px;
+    }
+
+    .work-process .steps-features .feature-item span {
+        font-size: 14px;
+        color: color-mix(in srgb, var(--default-color), transparent 15%);
+    }
+
+@media (max-width: 1199px) {
+    .work-process .steps-image {
+        height: 240px;
+    }
+
+    .work-process .steps-content {
+        padding: 35px 25px 25px;
+    }
+
+        .work-process .steps-content h3 {
+            font-size: 22px;
+        }
+}
+
+@media (max-width: 991px) {
+    .work-process .steps-item {
+        margin-bottom: 30px;
+    }
+
+    .work-process .steps-image {
+        height: 220px;
+    }
+
+    .work-process .steps-content {
+        padding: 30px 20px 20px;
+    }
+
+        .work-process .steps-content .steps-number {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            left: 25px;
+            top: -25px;
+        }
+
+        .work-process .steps-content h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .work-process .steps-content p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+}
+
+/*--------------------------------------------------------------
+# Call To Action Section botón ver cv o postularse
+--------------------------------------------------------------*/
+.call-to-action {
+    padding: 120px 0;
+    position: relative;
+    clip-path: inset(0);
+}
+
+    .call-to-action img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    .call-to-action:before {
+        content: "";
+        background: color-mix(in srgb, var(--background-color), transparent 35%);
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+    }
+
+    .call-to-action .container {
+        position: relative;
+        z-index: 3;
+    }
+
+    .call-to-action h3 {
+        color: var(--default-color);
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .call-to-action p {
+        color: var(--default-color);
+    }
+
+    .call-to-action .cta-btn {
+        font-family: var(--heading-font);
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 12px 40px;
+        border-radius: 50px;
+        transition: 0.5s;
+        margin: 10px;
+        border: 2px solid var(--contrast-color);
+        color: var(--contrast-color);
+    }
+
+        .call-to-action .cta-btn:hover {
+            background: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+
+/*--------------------------------------------------------------
+# Error 404 Section
+--------------------------------------------------------------*/
+.error-404 {
+    padding: 80px 0;
+    margin: 0 auto;
+}
+
+    .error-404 .error-icon {
+        font-size: 5rem;
+        color: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .error-404 .error-code {
+        font-size: clamp(6rem, 15vw, 12rem);
+        font-weight: 800;
+        color: color-mix(in srgb, var(--heading-color), transparent 10%);
+        font-family: var(--heading-font);
+        line-height: 1;
+    }
+
+    .error-404 .error-title {
+        font-size: 2rem;
+        color: var(--heading-color);
+        font-weight: 600;
+    }
+
+    .error-404 .error-text {
+        font-size: 1.1rem;
+        color: color-mix(in srgb, var(--default-color), transparent 20%);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .error-404 .search-box {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+        .error-404 .search-box .input-group {
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .error-404 .search-box .form-control {
+            border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: var(--default-color);
+            background-color: var(--surface-color);
+            border-radius: 50px;
+        }
+
+            .error-404 .search-box .form-control:focus {
+                box-shadow: none;
+                border-color: var(--accent-color);
+            }
+
+            .error-404 .search-box .form-control::placeholder {
+                color: color-mix(in srgb, var(--default-color), transparent 60%);
+            }
+
+        .error-404 .search-box .search-btn {
+            background-color: var(--accent-color);
+            color: var(--contrast-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+            .error-404 .search-box .search-btn:hover {
+                background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+            }
+
+    .error-404 .error-action .btn-primary {
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+        background-color: var(--accent-color);
+        border: none;
+        color: var(--contrast-color);
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+        .error-404 .error-action .btn-primary:hover {
+            background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+            transform: translateY(-2px);
+        }
+
+@media (max-width: 768px) {
+    .error-404 {
+        padding: 60px 0;
+    }
+
+        .error-404 .error-code {
+            font-size: clamp(4rem, 12vw, 8rem);
+        }
+
+        .error-404 .error-title {
+            font-size: 1.5rem;
+        }
+
+        .error-404 .error-text {
+            font-size: 1rem;
+            padding: 0 20px;
+        }
+
+        .error-404 .search-box {
+            margin: 0 20px;
+        }
+}

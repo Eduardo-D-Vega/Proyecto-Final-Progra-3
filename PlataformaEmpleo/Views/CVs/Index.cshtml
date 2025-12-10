@@ -4,7 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="text-white-special">Index</h1>
+
+<p>
+    <a asp-action="Create" class="text-white-special">Crear CV</a>
+</p>
 
 <!--si falla el programa al intentar crear un cv porque el candidato ya tiene un cv -->
 @if (TempData["ErrorCV"] != null)
@@ -21,9 +25,6 @@
     </div>
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -74,11 +75,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Certificaciones)
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCV">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCV">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCV">Delete</a>
             </td>
+             <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdCV" class="link-accion">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdCV" class="link-accion">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdCV" class="link-accion">Eliminar</a>
+             </td>
         </tr>
 }
     </tbody>

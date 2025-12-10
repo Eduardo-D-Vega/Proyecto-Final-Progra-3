@@ -7,29 +7,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Panel Administrador</title>
+    <title>@ViewData["Title"] - Gestion</title>
 
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-    <!-- Tu CSS del admin -->
+    <!-- css de admin -->
     <link rel="stylesheet" href="~/css/admi.css" />
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-controller="Admin" asp-action="Index">Panel Admin</a>
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <!-- titulo del panel -->
+            <a class="navbar-brand" asp-controller="Admin" asp-action="Index">Panel de Administrador</a>
+
+            <!-- pestaña Home -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white-special" asp-controller="Home" asp-action="Index">INICIO</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Contenido dinámico -->
     <main class="container mt-4">
         @RenderBody()
     </main>
 
-    <!-- Scripts -->
+    <!-- scripts -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>

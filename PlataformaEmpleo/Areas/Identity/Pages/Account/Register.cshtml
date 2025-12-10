@@ -9,36 +9,39 @@
     <div class="table" id="outer_table">
         <div class="table_cell half">
             <div class="content">
-
-                <h2>Create Account</h2>
+                <h2 class="text-white-special">Crear cuenta</h2>
                 <hr />
                 <br />
-
                 <form method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <label>Nombre</label><br />
+
+                    <label class="text-white-special">Nombre</label>
                     <input asp-for="Input.Nombre" placeholder="Nombre" class="form-input" />
                     <span asp-validation-for="Input.Nombre" class="text-danger"></span><br />
-                    <label>Email</label><br />
+
+                    <label class="text-white-special">Correo</label>
                     <input asp-for="Input.Email" placeholder="Email" class="form-input" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span><br />
-                    <label>Password</label><br />
+
+                    <label class="text-white-special">Contraseña</label>
                     <input asp-for="Input.Password" type="password" placeholder="••••••••" class="form-input" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span><br />
-                    <label>Confirm Password</label><br />
+
+                    <label class="text-white-special">Confirme la contraseña</label>
                     <input asp-for="Input.ConfirmPassword" type="password" placeholder="••••••••" class="form-input" />
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span><br />
-                    <input type="submit" value="Create Account" class="button-submit" />
+
+                    <input type="submit" value="Crear cuenta" class="button-submit" />
                 </form>
 
                 <br />
-                <a asp-page="./Login" class="small-text">Already have an account? Login →</a>
+                <a asp-page="./Login" class="small-text text-white-special">¿Ya tienes una cuenta? Iniciar sesión →</a>
 
             </div>
         </div>
 
         <div class="table_cell half right">
-            <h3>Join the platform</h3>
+            <h3 class="text-white-special">Únete a la plataforma</h3>
         </div>
     </div>
 </div>
