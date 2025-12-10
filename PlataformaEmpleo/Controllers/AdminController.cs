@@ -5,7 +5,7 @@ using PlataformaEmpleo.Data;
 
 namespace PlataformaEmpleo.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
