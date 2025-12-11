@@ -86,7 +86,7 @@ namespace PlataformaEmpleo.Controllers
                 await _context.SaveChangesAsync();
                  
                 //se lee el IdOferta que envia el usuario en el formulario
-                var idOfertaString = Request.Form["IdOferta"].FirstOrDefault();
+                var idOfertaString = Request.Form["IdOfertaSeleccionada"].FirstOrDefault();
 
                 //Si ese valor existe y es un numero válido significa que el usuario selecciono una oferta
                 if (!string.IsNullOrEmpty(idOfertaString) && int.TryParse(idOfertaString, out int idOferta))
