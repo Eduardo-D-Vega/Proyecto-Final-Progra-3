@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
-    [Authorize]
+    [Authorize (Roles = "Usuario, Administrador")]
     public class PostulacionesController : Controller
     {
         private readonly ApplicationDbContext _context;

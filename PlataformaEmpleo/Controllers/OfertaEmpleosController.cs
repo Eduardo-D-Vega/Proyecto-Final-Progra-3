@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
-    [Authorize]
+    [Authorize (Roles = "Administrador, Reclutador")]
     public class OfertaEmpleosController : Controller
     {
         private readonly ApplicationDbContext _context;

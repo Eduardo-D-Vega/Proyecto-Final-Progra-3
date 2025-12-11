@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
-    [Authorize]
+    [Authorize (Roles = "Usuario, Administrador")]
     public class CVsController : Controller
     {
         private readonly ApplicationDbContext _context;
