@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
-    [Authorize (Roles = "Usuario, Administrador")]
     public class PostulacionesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +22,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: Postulaciones
+        [Authorize(Roles = "Usuario, Administrador, Reclutador")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Postulacion.Include(p => p.Candidato);
@@ -30,6 +30,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: Postulaciones/Details/5
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,6 +50,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: Postulaciones/Create
+        [Authorize(Roles = "Usuario, Administrador")]
         public IActionResult Create()
         { 
             //se crea un selectList de la clase enum TipoPostulacion
@@ -74,6 +76,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Create([Bind("IdPostulacion,FechaPostulacion,EstadoPostulacion,IdCandidato")] Postulacion postulacion)
         {
             try
@@ -126,6 +129,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: Postulaciones/Edit/5
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -161,6 +165,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Edit(int id, [Bind("IdPostulacion,FechaPostulacion,EstadoPostulacion,IdCandidato")] Postulacion postulacion)
         {
             if (id != postulacion.IdPostulacion)
@@ -193,6 +198,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: Postulaciones/Delete/5
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -214,6 +220,7 @@ namespace PlataformaEmpleo.Controllers
         // POST: Postulaciones/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var postulacion = await _context.Postulacion.FindAsync(id);

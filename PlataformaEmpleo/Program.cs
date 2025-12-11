@@ -15,21 +15,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentity<Usuario,IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
-    options.Password.RequireDigit = false; // Requiere al menos un dígito numérico
-    options.Password.RequireLowercase = true; // requiere al menos una letra minúscula
-    options.Password.RequireUppercase = true; // requiere al menos una letra mayúscula
-    options.Password.RequireNonAlphanumeric = true; // requiere caracteres alfanuméricos
-    options.Password.RequiredLength = 6; // longitud mInima de la contraseña
+    options.Password.RequireDigit = true; // Requiere al menos un dï¿½gito numï¿½rico
+    options.Password.RequireLowercase = true; // requiere al menos una letra minï¿½scula
+    options.Password.RequireUppercase = true; // requiere al menos una letra mayï¿½scula
+    options.Password.RequireNonAlphanumeric = true; // requiere caracteres alfanumï¿½ricos
+    options.Password.RequiredLength = 6; // longitud mInima de la contraseï¿½a
 
 }).AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";// ruta hacia AccessDenied
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddRazorPages(); // para las páginas Razor
+builder.Services.AddRazorPages(); // para las pï¿½ginas Razor
 
 var app = builder.Build();
-app.MapRazorPages(); // Mapeo de las páginas Razor
+app.MapRazorPages(); // Mapeo de las pï¿½ginas Razor
+
 
 //Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -40,12 +46,11 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
-app.UseStaticFiles(); // Habilitar el uso de archivos estáticos
+app.UseStaticFiles(); // Habilitar el uso de archivos estï¿½ticos
 app.UseRouting();
 
-app.UseAuthentication(); //para la autenticaciòn de usuarios
+app.UseAuthentication(); //para la autenticaciï¿½n de usuarios
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -70,12 +70,6 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Horario)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Reclutador.NombreEmpresa)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Reclutador.NombreEmpresa)
-        </dd>
     </dl>
 </div>
 
@@ -99,19 +93,13 @@
         </thead>
         <tbody>
             @foreach (var item in Model.Postulaciones)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Postulaciones.Candidato.NombreCompleto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Postulaciones.Candidato.Telefono)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Postulaciones.Candidato.Ciudad)
-                    </td>
-                </tr>
-            }
+                {
+                    <tr>
+                        <td>@item.Postulaciones.Candidato.NombreCompleto</td>
+                        <td>@item.Postulaciones.Candidato.Telefono</td>
+                        <td>@item.Postulaciones.Candidato.Ciudad</td>
+                    </tr>
+                }
         </tbody>
     </table>
 

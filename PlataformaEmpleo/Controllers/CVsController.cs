@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
-    [Authorize (Roles = "Usuario, Administrador")]
     public class CVsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,6 +23,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: CVs
+        [Authorize(Roles = "Usuario, Administrador, Reclutador")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.CV.Include(c => c.Candidato);
@@ -31,6 +31,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: CVs/Details/5
+        [Authorize(Roles = "Usuario, Administrador, Reclutador")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,6 +51,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: CVs/Create
+        [Authorize(Roles = "Usuario, Administrador")]
         public IActionResult Create()
         {
             ViewData["CandidatoId"] = new SelectList(_context.Candidato, "IdCandidato", "NombreCompleto");
@@ -61,6 +63,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Create([Bind("IdCV, PerfilProfesional,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,Certificaciones,CandidatoId")] CV cV)
         {
             //validación para evitar un cv duplicado por candidato
@@ -95,12 +98,12 @@ namespace PlataformaEmpleo.Controllers
 
         //método para generar el pdf del cv
         [HttpGet]
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<ActionResult> PDF(int? id)
         {
             if (id == null)
                 return NotFound();
 
-            //
             var cv = await _context.CV
                 .Include(x => x.Candidato)
                 .FirstOrDefaultAsync(x => x.IdCV == id);
@@ -110,7 +113,6 @@ namespace PlataformaEmpleo.Controllers
 
             try
             {
-                //
                 var document = new CvDocument(cv);
                 var pdfBytes = document.GeneratePdf(); //→ Genera el PDF como un arreglo de bytes, método de QuestPDF
                 var fileName = $"CV_{cv.Candidato.Nombre}_{cv.Candidato?.Apellido}.pdf"
@@ -124,8 +126,8 @@ namespace PlataformaEmpleo.Controllers
             }
         }
 
-
         // GET: CVs/Edit/5
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -147,6 +149,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Edit(int id, [Bind("IdCV,PerfilProfesional,FormacionAcademica,ExperienciaLaboral,Habilidades,Idiomas,Certificaciones,CandidatoId")] CV cV)
         {
             if (id != cV.IdCV)
@@ -179,6 +182,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: CVs/Delete/5
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -200,6 +204,7 @@ namespace PlataformaEmpleo.Controllers
         // POST: CVs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario, Administrador")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var cV = await _context.CV.FindAsync(id);
