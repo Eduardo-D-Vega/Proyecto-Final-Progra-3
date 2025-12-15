@@ -1,46 +1,47 @@
 ﻿@model PlataformaEmpleo.Models.Candidato
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Perfil";
 }
 
-<h1>Create</h1>
+<h1 class="text-white-special">Crear Perfil</h1>
 
-<h4>Candidato</h4>
+<h4 class="text-white-special">Candidato</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
+                <label class="text-white-special">Nombre</label>
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Apellido" class="control-label"></label>
+                <label class="text-white-special">Apellido</label>
                 <input asp-for="Apellido" class="form-control" />
                 <span asp-validation-for="Apellido" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
+                <label class="text-white-special">Teléfono</label>
                 <input asp-for="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ciudad" class="control-label"></label>
+                <label class="text-white-special">Ciudad</label>
                 <input asp-for="Ciudad" class="form-control" />
                 <span asp-validation-for="Ciudad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-contraste" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Candidatos" asp-action="Index" class="text-white-special">Volver a la lista</a>
 </div>
 
 @section Scripts {

@@ -4,12 +4,12 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-white-special">Detalles de la oferta laboral</h1>
 
 <div>
-    <h4>OfertaEmpleo</h4>
+    <h4 class="text-white-special">Oferta de empleo</h4>
     <hr />
-    <dl class="row">
+    <dl class="text-white-special" = "row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
@@ -70,45 +70,38 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Horario)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Reclutador.NombreEmpresa)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Reclutador.NombreEmpresa)
-        </dd>
     </dl>
 </div>
+
 <div>
-    <h4>Candidatos</h4>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Candidatos
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.postulacionesEmpleos)
-            {
+    <hr class="my-4 border-light">
+    <h4 class="text-white-special mb-3">Lista de candidatos postulados</h4>
+
+    <div class="table-responsive tabla-candidatos">
+        <table class="table table-striped table-bordered bg-white text-dark rounded shadow-sm">
+            <thead class="table-light text-center">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FechaPostulacion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EstadoPostulacion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Candidato.Nombre)
-                    </td>
+                    <th>Nombre Completo</th>
+                    <th>Teléfono</th>
+                    <th>Ciudad</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Postulaciones)
+                {
+                    <tr>
+                        <td>@item.Postulaciones.Candidato.NombreCompleto</td>
+                        <td class="text-center">@item.Postulaciones.Candidato.Telefono</td>
+                        <td>@item.Postulaciones.Candidato.Ciudad</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
-
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdOferta">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.IdOferta" class="btn btn-contraste">Editar</a> |
+    <a asp-action="Index" class="text-white-special">Volver a la lista</a>
 </div>

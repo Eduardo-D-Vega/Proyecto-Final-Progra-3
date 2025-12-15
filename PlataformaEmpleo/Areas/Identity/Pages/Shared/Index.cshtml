@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>@ViewData["Title"] - PlataformaEmpleo</title>
+
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+<body class="auth-page">
+
+    <div class = "top-nav">
+            <a asp-controller="Home" asp-action="Index" class="home-btn"> Inicio </a>
+    </div>
+
+    @RenderBody()
+
+    <!-- deja que las vistan implementen script -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+
+
+

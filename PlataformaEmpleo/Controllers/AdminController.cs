@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PlataformaEmpleo.Data; // ajusta si tu DbContext está en otro namespace
+using PlataformaEmpleo.Data;
 
 namespace PlataformaEmpleo.Controllers
 {
-    
+    [Authorize(Roles = "Administrador")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;

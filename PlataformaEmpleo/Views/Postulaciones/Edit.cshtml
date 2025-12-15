@@ -4,39 +4,39 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 class="text-white-special">Editar Postulación</h1>
 
-<h4>Postulacion</h4>
+<h4 class="text-white-special">Postulación</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdPostulacion" />
+
             <div class="form-group">
-                <label asp-for="FechaPostulacion" class="control-label"></label>
+                <label class="text-white-special">Fecha de postulación</label>                
                 <input asp-for="FechaPostulacion" class="form-control" />
                 <span asp-validation-for="FechaPostulacion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EstadoPostulacion" class="control-label"></label>
+                <label class="text-white-special">Estado de la postulación</label>
                 <select asp-for="EstadoPostulacion" class="form-control" asp-items="@(ViewData["EstadoPostulacion"] as IEnumerable<SelectListItem>)"></select>
                 <span asp-validation-for="EstadoPostulacion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Nombre del candidato</label>
+                <label class="text-white-special">Nombre del candidato</label>
                 <select asp-for="IdCandidato" class="form-control" asp-items="ViewBag.IdCandidato"></select>
                 <span asp-validation-for="IdCandidato" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            <br />
+            <input type="submit" value="Guardar" class="btn btn-contraste" />
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="text-white-special">Volver a la lista</a>"
 </div>
 
 @section Scripts {

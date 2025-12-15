@@ -4,14 +4,36 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="text-white-special">Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="text-white-special">Crear CV</a>
 </p>
+
+@if (TempData["ErrorCV"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorCV"]
+    </div>
+}
+
+<!-- si el CV se creo sin problemas -->
+@if (TempData["SuccessCV"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessCV"]
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerfilProfesional)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FormacionAcademica)
             </th>
@@ -25,41 +47,51 @@
                 @Html.DisplayNameFor(model => model.Idiomas)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RutaArchivo)
+                @Html.DisplayNameFor(model => model.Certificaciones)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Candidato)
-            </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FormacionAcademica)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Candidato.NombreCompleto)</td>
+
+                <td>
+                    @(item.PerfilProfesional != null && 
+                    /* hace la verificacion de si el texto es mas largo que los 55 caracteres*/
+                    item.PerfilProfesional.Length > 40 ? item.PerfilProfesional.
+                    /* si es mas largo el texto se muestran los primeros 55 caracrtes y el resto es "...." */
+                    Substring(0, 40) + "..." : item.PerfilProfesional)
+                </td>
+
+                <td>
+                    @(item.FormacionAcademica != null && item.FormacionAcademica.Length > 40 ? item.FormacionAcademica.Substring(0, 40) + "..." : item.FormacionAcademica)
+                </td>
+
+                <td>
+                    @(item.ExperienciaLaboral != null && item.ExperienciaLaboral.Length > 40 ? item.ExperienciaLaboral.Substring(0, 40) + "..." : item.ExperienciaLaboral)
+                </td>
+
+                <td>
+                    @(item.Habilidades != null && item.Habilidades.Length > 40 ? item.Habilidades.Substring(0, 40) + "..." : item.Habilidades)
+                </td>
+
+                <td>
+                    @(item.Idiomas != null && item.Idiomas.Length > 40 ? item.Idiomas.Substring(0, 40) + "..." : item.Idiomas)
+                </td>
+
+                <td>
+                    @(item.Certificaciones != null && item.Certificaciones.Length > 40 ? item.Certificaciones.Substring(0, 40) + "..." : item.Certificaciones)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExperienciaLaboral)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Habilidades)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Idiomas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RutaArchivo)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.Candidato.Nombre)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCV">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCV">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCV">Delete</a>
-            </td>
-        </tr>
-}
+                <td style="white-space: nowrap;">
+                    <a asp-action="Edit" asp-route-id="@item.IdCV" class="link-accion">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdCV" class="link-accion">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdCV" class="link-accion">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+

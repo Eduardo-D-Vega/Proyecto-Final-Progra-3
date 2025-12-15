@@ -4,6 +4,7 @@ using PlataformaEmpleo.Models;
 
 namespace PlataformaEmpleo.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

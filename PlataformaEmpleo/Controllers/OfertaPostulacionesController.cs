@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlataformaEmpleo.Data;
 using PlataformaEmpleo.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
+    [Authorize (Roles = "Administrador, Reclutador")]
     public class OfertaPostulacionesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,7 +24,7 @@ namespace PlataformaEmpleo.Controllers
         // GET: OfertaPostulaciones
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.OfertaPostulacion.Include(o => o.OfertaEmpleo).Include(o => o.Postulacion);
+            var applicationDbContext = _context.OfertaPostulacion.Include(o => o.OfertaEmpleo).Include(o => o.Postulaciones);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,8 +38,8 @@ namespace PlataformaEmpleo.Controllers
 
             var ofertaPostulacion = await _context.OfertaPostulacion
                 .Include(o => o.OfertaEmpleo)
-                .Include(o => o.Postulacion)
-                    .ThenInclude(p => p.Candidato) //incluye el candidato relacionado
+                .Include(o => o.Postulaciones)
+                    .ThenInclude(p => p.Candidato) 
                 .FirstOrDefaultAsync(m => m.OfertasPostulacionesId == id);
 
             if (ofertaPostulacion == null)
@@ -158,7 +160,7 @@ namespace PlataformaEmpleo.Controllers
 
             var ofertaPostulacion = await _context.OfertaPostulacion
                 .Include(o => o.OfertaEmpleo)
-                .Include(o => o.Postulacion)
+                .Include(o => o.Postulaciones)
                 .FirstOrDefaultAsync(m => m.OfertasPostulacionesId == id);
             if (ofertaPostulacion == null)
             {

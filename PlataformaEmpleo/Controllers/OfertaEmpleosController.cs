@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlataformaEmpleo.Data;
 using PlataformaEmpleo.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PlataformaEmpleo.Controllers
 {
@@ -19,6 +19,7 @@ namespace PlataformaEmpleo.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Usuario, Administrador, Reclutador")]
         // GET: OfertaEmpleos
         public async Task<IActionResult> Index()
         {
@@ -26,6 +27,7 @@ namespace PlataformaEmpleo.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Usuario, Administrador, Reclutador")]
         // GET: OfertaEmpleos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -35,9 +37,12 @@ namespace PlataformaEmpleo.Controllers
             }
 
             var ofertaEmpleo = await _context.OfertaEmpleo
-                .Include(o => o.Reclutador)
-                //.Include(o => o.postulacionesEmpleos)
-                .FirstOrDefaultAsync(m => m.IdOferta == id);
+                .Include(o => o.Reclutador) // para mostrar el NombreEmpresa
+                .Include(o => o.Postulaciones) // tabla intermedia
+                    .ThenInclude(op => op.Postulaciones) 
+                    .ThenInclude(p => p.Candidato) // se carga el candidato
+                    .FirstOrDefaultAsync(m => m.IdOferta == id);
+
             if (ofertaEmpleo == null)
             {
                 return NotFound();
@@ -47,6 +52,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: OfertaEmpleos/Create
+        [Authorize(Roles = "Administrador, Reclutador")]
         public IActionResult Create()
         {
             ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "NombreEmpresa");
@@ -58,6 +64,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> Create([Bind("IdOferta,Titulo,Descripcion,Requisitos,Ubicacion,FechaPublicacion,FechaCierre,TipoContrato,Salario,Empresa,Horario,ReclutadorId")] OfertaEmpleo ofertaEmpleo)
         {
             try
@@ -76,6 +83,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: OfertaEmpleos/Edit/5
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,7 +96,7 @@ namespace PlataformaEmpleo.Controllers
             {
                 return NotFound();
             }
-            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "IdReclutador", ofertaEmpleo.ReclutadorId);
+            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "NombreEmpresa", ofertaEmpleo.ReclutadorId);
             return View(ofertaEmpleo);
         }
 
@@ -97,6 +105,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> Edit(int id, [Bind("IdOferta,Titulo,Descripcion,Requisitos,Ubicacion,FechaPublicacion,FechaCierre,TipoContrato,Salario,Empresa,Horario,ReclutadorId")] OfertaEmpleo ofertaEmpleo)
         {
             if (id != ofertaEmpleo.IdOferta)
@@ -124,11 +133,12 @@ namespace PlataformaEmpleo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "IdReclutador", ofertaEmpleo.ReclutadorId);
+            ViewData["ReclutadorId"] = new SelectList(_context.Set<Reclutador>(), "IdReclutador", "NombreEmpresa", ofertaEmpleo.ReclutadorId);
             return View(ofertaEmpleo);
         }
 
         // GET: OfertaEmpleos/Delete/5
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +160,7 @@ namespace PlataformaEmpleo.Controllers
         // POST: OfertaEmpleos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var ofertaEmpleo = await _context.OfertaEmpleo.FindAsync(id);

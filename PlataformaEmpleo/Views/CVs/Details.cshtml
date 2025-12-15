@@ -4,12 +4,24 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-white-special">Detalles del currículo</h1>
 
 <div>
-    <h4>CV</h4>
+    <h4 class ="text-white-special">Información CV</h4>
     <hr />
-    <dl class="row">
+    <dl class="text-white-special" ="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidato)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Candidato.NombreCompleto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PerfilProfesional)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PerfilProfesional)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FormacionAcademica)
         </dt>
@@ -34,21 +46,19 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Idiomas)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RutaArchivo)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Certificaciones)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RutaArchivo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Candidato)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Candidato.NombreCompleto)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Certificaciones)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdCV">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="PDF" asp-route-id="@Model.IdCV"
+       class="btn btn-sm btn-danger">
+        Desgarcar PDF
+    </a>
+    <a asp-action="Edit" asp-route-id="@Model.IdCV" class="btn btn-contraste">Editar</a> |
+    <a asp-action="Index" class="text-white-special">Volver a la lista</a>
 </div>

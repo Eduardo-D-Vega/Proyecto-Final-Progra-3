@@ -1,0 +1,48 @@
+﻿@page
+@model LoginModel
+@{
+    Layout = "/Areas/Identity/Pages/Shared/Index.cshtml";
+    ViewData["Title"] = "Login";
+}
+
+<div class="page_wrapper">
+    <div class="table" id="outer_table">
+        <div class="table_cell half">
+            <div class="content">
+
+                <h2 class="text-white-special">Bienvenido de nuevo</h2>
+                <hr />
+                <br />
+
+                <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+                    <!-- aviso de correo o contraseña incorrectos -->
+                    <div asp-validation-summary="ModelOnly" class="text-white-special"></div>
+
+                    <label class="text-white-special">Correo</label>
+                    <input asp-for="Input.Email" placeholder="Email" class="form-input" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span><br />
+
+                    <label class="text-white-special">Contraseña</label>
+                    <input asp-for="Input.Password" type="password" placeholder="••••••••" class="form-input" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span><br />
+
+                    <input type="submit" value="Iniciar sesión" class="button-submit" />
+                </form>
+
+                <br />
+                <a asp-page="./Register" class="small-text text-white-special">¿No tienes una cuenta? Regístrate →</a>
+
+            </div>
+        </div>
+
+        <div class="table_cell half right">
+            <h3 class="text-white-special">Tu plataforma segura</h3>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

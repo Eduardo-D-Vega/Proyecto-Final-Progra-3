@@ -1,0 +1,78 @@
+﻿@model List<PlataformaEmpleo.Models.AsignarRol>
+
+@{
+    ViewData["Title"] = "Asignar roles";
+}
+
+<div class="page_wrapper">
+    <div class="content">
+        <h2 class="text-center mb-3 text-white-special">
+            Asignación de @ViewBag.RoleName
+        </h2>
+
+        <div class="roles-container asignar-container">
+            <table class="table roles-table asignar-table">
+                <thead>
+                    <tr>
+                        <!-- encabezados -->
+                        <th class="text-center">Usuario</th>
+                        <th class="text-center">Correo</th>
+                        <th class="text-center">Estado de rol</th>
+                        <th class="text-center">Eliminar usuario</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td class="rol-nombre">
+                                @Model[i].Nombre
+                            </td>
+
+                            <td class="rol-email">
+                                @Model[i].Email
+                            </td>
+
+                            <td class="text-center">
+                                
+                                <form asp-action="Roles" method="post" class="d-inline">
+                                    <input type="hidden" name="rolId" value="@ViewBag.RoleId" />
+                                    <input type="hidden" name="usuarioId" value="@Model[i].UserId" />
+
+                                    @if (Model[i].EstadoRol)
+                                    {
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            Retirar
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-success btn-sm">
+                                            Asignar
+                                        </button>
+                                    }
+                                </form>
+                            </td>
+
+                            <td class="text-center">
+                                <form asp-action="EliminarUsuarios" method="post" onsubmit="return confirm('¿Seguro que desea eliminar este usuario?');">
+
+                                    <input type="hidden" name="usuarioId" value="@Model[i].UserId" />
+
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <a asp-action="Index" class="btn-volver">
+                Volver
+            </a>
+        </div>
+    </div>
+</div>
