@@ -25,7 +25,8 @@ builder.Services.AddIdentity<Usuario,IdentityRole>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";// ruta hacia AccessDenied
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.LoginPath = "/Identity/Account/Login";
 });
 
 // Add services to the container.

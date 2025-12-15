@@ -1,0 +1,21 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+
+<h2 class="mb-3 text-white-special">Roles existentes</h2>
+
+<div class="roles-container">
+    <table class="table roles-table">
+        @foreach (var rol in Model)
+        {
+            <tr>
+                <td class="rol-nombre">@rol.Name</td>
+                <td class="text-end">
+                    <a asp-action="Asignar"
+                       asp-route-RolId="@rol.Id"
+                       class="btn-asignar text-white-special">
+                        Asignar
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -15,7 +15,8 @@
                 <br />
 
                 <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!-- aviso de correo o contraseña incorrectos -->
+                    <div asp-validation-summary="ModelOnly" class="text-white-special"></div>
 
                     <label class="text-white-special">Correo</label>
                     <input asp-for="Input.Email" placeholder="Email" class="form-input" />

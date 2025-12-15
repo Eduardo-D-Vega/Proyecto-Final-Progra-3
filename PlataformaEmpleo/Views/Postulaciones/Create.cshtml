@@ -18,11 +18,9 @@
                 <input asp-for="FechaPostulacion" class="form-control" />
                 <span asp-validation-for="FechaPostulacion" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label class="text-white-special">Estado de la postulación</label>
-                <select asp-for="EstadoPostulacion" class="form-control"asp-items="@(ViewData["EstadoPostulacion"] as IEnumerable<SelectListItem>)"></select>
-                <span asp-validation-for="EstadoPostulacion" class="text-danger"></span>
-            </div>
+
+            <!-- no se añade "Estado postulación" porque eso lo gestiona el reclutador-->
+
             <div class="form-group">
                 <label class="text-white-special">Nombre del candidato</label>
                 <select asp-for="IdCandidato" class ="form-control" asp-items="ViewBag.IdCandidato"></select>

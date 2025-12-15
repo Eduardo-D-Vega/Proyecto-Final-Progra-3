@@ -30,7 +30,7 @@ namespace PlataformaEmpleo.Controllers
         }
 
         // GET: Postulaciones/Details/5
-        [Authorize(Roles = "Administrador, Reclutador")]
+        [Authorize(Roles = "Administrador, Reclutador, Usuario")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -40,7 +40,10 @@ namespace PlataformaEmpleo.Controllers
 
             var postulacion = await _context.Postulacion
                 .Include(p => p.Candidato)
-                .FirstOrDefaultAsync(m => m.IdPostulacion == id);
+                .Include(pos => pos.OfertasPostulaciones)
+                .ThenInclude(op => op.OfertaEmpleo)
+                .FirstOrDefaultAsync(x => x.IdPostulacion == id);
+            
             if (postulacion == null)
             {
                 return NotFound();
@@ -53,6 +56,7 @@ namespace PlataformaEmpleo.Controllers
         [Authorize(Roles = "Usuario, Administrador")]
         public IActionResult Create()
         { 
+
             //se crea un selectList de la clase enum TipoPostulacion
             var estadoPostulaciones = Enum.GetValues(typeof(TipoPostulacion))
                 .Cast<TipoPostulacion>()
@@ -77,21 +81,48 @@ namespace PlataformaEmpleo.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Usuario, Administrador")]
-        public async Task<IActionResult> Create([Bind("IdPostulacion,FechaPostulacion,EstadoPostulacion,IdCandidato")] Postulacion postulacion)
+        public async Task<IActionResult> Create([Bind("IdPostulacion,FechaPostulacion,IdCandidato")] Postulacion postulacion)
         {
             try
             {
-                //se guardar la postulación
+                postulacion.EstadoPostulacion = TipoPostulacion.Pendiente;
+                postulacion.FechaPostulacion = DateTime.Now;
+
+                // se guardan la postulaciones
                 _context.Add(postulacion);
                 await _context.SaveChangesAsync();
-                 
-                //se lee el IdOferta que envia el usuario en el formulario
+
+                // se lee el IdOferta que envia el usuario
                 var idOfertaString = Request.Form["IdOfertaSeleccionada"].FirstOrDefault();
 
-                //Si ese valor existe y es un numero válido significa que el usuario selecciono una oferta
+
+                // si el valor existe y es correcto
                 if (!string.IsNullOrEmpty(idOfertaString) && int.TryParse(idOfertaString, out int idOferta))
                 {
-                    //se crea el registro en la tabla intermedia
+                    //se revisa si ya se ha postulado antes
+                    bool postulacionExistente = await _context.OfertaPostulacion
+                        .Include(op => op.Postulaciones)
+                        .AnyAsync(op =>
+                            op.IdOferta == idOferta &&
+                            op.Postulaciones.IdCandidato == postulacion.IdCandidato
+                        );
+
+
+                    if (postulacionExistente)
+                    {
+                        // se elimina la postulación recien creada
+                        _context.Postulacion.Remove(postulacion);
+                        await _context.SaveChangesAsync();
+
+                        ModelState.AddModelError("", "Ya se ha postulado anteriormente a este puesto");
+
+                        ViewData["IdCandidato"] = new SelectList( _context.Candidato,"IdCandidato", "NombreCompleto",postulacion.IdCandidato);
+                        ViewData["IdOferta"] = new SelectList(_context.OfertaEmpleo, "IdOferta","Titulo", idOferta);
+
+                        return View(postulacion);
+                    }
+
+                    // se crea el registro en la tabla intermedia
                     var ofertaPost = new OfertaPostulacion
                     {
                         IdPostulacion = postulacion.IdPostulacion,
@@ -101,35 +132,37 @@ namespace PlataformaEmpleo.Controllers
                     _context.Add(ofertaPost);
                     await _context.SaveChangesAsync();
                 }
-                //si el usuario no selecciona una oferta
                 else
                 {
-                    //si la postulación se guarda ahora se borra
+                    // por si no se selecciona oferta
                     _context.Postulacion.Remove(postulacion);
                     await _context.SaveChangesAsync();
-                    
+
                     ModelState.AddModelError("", "Seleccione una oferta para poder postularse");
-                    
-                    
-                    ViewData["IdCandidato"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre", postulacion.IdCandidato);
-                    ViewData["IdOferta"] = new SelectList(_context.OfertaEmpleo, "IdOferta", "Titulo");
+
+                    ViewData["IdCandidato"] = new SelectList( _context.Candidato,"IdCandidato","Nombre",postulacion.IdCandidato);
+
+                    ViewData["IdOferta"] = new SelectList(_context.OfertaEmpleo,"IdOferta","Titulo" );
+
                     return View(postulacion);
                 }
-                return RedirectToAction(nameof(Index)); 
+
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
                 throw;
             }
 
-            //si algo falla se viene aqui y vuelve a cargar los selects list
-            ViewData["IdCandidato"] = new SelectList(_context.Candidato, "IdCandidato", "Nombre", postulacion.IdCandidato);
-            ViewData["IdOferta"] = new SelectList(_context.OfertaEmpleo, "IdOferta", "Titulo");
+            // si algo falla se recargan los select list
+            ViewData["IdCandidato"] = new SelectList( _context.Candidato,"IdCandidato","Nombre",postulacion.IdCandidato);
+            ViewData["IdOferta"] = new SelectList(_context.OfertaEmpleo,"IdOferta","Titulo" );
+
             return View(postulacion);
         }
 
         // GET: Postulaciones/Edit/5
-        [Authorize(Roles = "Usuario, Administrador")]
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -165,7 +198,7 @@ namespace PlataformaEmpleo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Usuario, Administrador")]
+        [Authorize(Roles = "Administrador, Reclutador")]
         public async Task<IActionResult> Edit(int id, [Bind("IdPostulacion,FechaPostulacion,EstadoPostulacion,IdCandidato")] Postulacion postulacion)
         {
             if (id != postulacion.IdPostulacion)
@@ -208,7 +241,10 @@ namespace PlataformaEmpleo.Controllers
 
             var postulacion = await _context.Postulacion
                 .Include(p => p.Candidato)
+                .Include(o => o.OfertasPostulaciones)
+                    .ThenInclude(e => e.OfertaEmpleo)
                 .FirstOrDefaultAsync(m => m.IdPostulacion == id);
+
             if (postulacion == null)
             {
                 return NotFound();

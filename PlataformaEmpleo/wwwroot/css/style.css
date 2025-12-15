@@ -67,8 +67,13 @@ h3 {
     font-weight: 300;
 }
 
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
 body {
-    background: #144dce;
+    background: #eb350c;
     background: url("/img/Fondo.jpg") no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
@@ -76,7 +81,12 @@ body {
     font-family: 'Segoe UI', 'Sans Serif Collection';
     font-weight: 200;
     -webkit-font-smoothing: antialiased;
-    margin: 0px; /*sin marguenes */
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-fill {
+    flex: 1;
 }
 
 hr { /*linea horizontal*/
@@ -105,7 +115,7 @@ hr { /*linea horizontal*/
     text-align: right; /* lo alinea a la derecha */
     font-size: 1.2rem;
     font-weight: 500; 
-    margin-top: 0.5rem; /* espacio superior si quieres separarlo de los datos */
+    margin-top: 0.5rem; /* espacio superior para separarlo de los datos */
     color: #fff !important;
 }
 
@@ -119,7 +129,6 @@ hr { /*linea horizontal*/
         color: #9fbeeb; /* un azul más claro al pasar el mouse */
         text-decoration: underline; /*subraya al pasar el mouse */
     }
-
 
 
 .page_wrapper {
@@ -229,6 +238,28 @@ hr { /*linea horizontal*/
 .hex_top {
     width: 200px;
 }
+
+/*para el diseño de la tabla candidatos en ofertas*/
+.tabla-candidatos {
+    max-width: 850px;
+    /*para que este centrada la tabla*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .tabla-candidatos table {
+        width: 100%;
+    }
+
+/* Contenedor para evitar que la tabla se salga de pantalla */
+.tabla-ofertas-container {
+    max-width: 100%;
+    overflow-x: auto; 
+}
+
+    .tabla-ofertas-container table {
+        background-color: #ffffff;
+    }
 
 /*Login Styling*/
 #outer_table {
@@ -1372,3 +1403,170 @@ section,
             margin: 0 20px;
         }
 }
+
+/* contenedor para centrar y reducir ancho */
+.roles-container {
+    max-width: 600px; /* hace la tabla más pequeña */
+    margin: 0 auto; /* centra la tabla */
+    padding: 20px;
+}
+
+/* tabla con fondo translúcido */
+.roles-table {
+    background: rgba(255, 255, 255, 0.100);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+    /* filas */
+    .roles-table tr {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* celdas */
+    .roles-table td {
+        padding: 14px 18px;
+        vertical-align: middle;
+    }
+
+/* nombre del rol */
+.rol-nombre {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Botón asignar */
+.btn-asignar {
+    background-color: #376994;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-asignar:hover {
+        background-color: #074173;
+        transform: scale(1.05);
+    }
+
+/* Diseño para la tabla de roles */
+.roles-container {
+    max-width: 500px; /* hace la tabla mas pequeña */
+    margin: 0 auto; /* y centra la tabla */
+    padding: 20px;
+}
+
+/* tabla */
+.roles-table {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: 20px;
+}
+
+    /* f ilas */
+    .roles-table tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* celdas */
+    .roles-table td {
+        padding: 12px 20px;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+/* estilo para el correo */
+.rol-email {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* estilo para los botones */
+.btn-contraste {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-contraste:hover {
+        background-color: #1f4f6c; 
+    }
+
+.btn-volver {
+    background-color: #78a9d4;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-volver:hover {
+        background-color: #777;
+    }
+
+
+
+/* diseño para la vista de asignación de roles */
+
+/* contenedor */
+.asignar-container {
+    max-width: 900px; /* más ancha SOLO aquí */
+    width: 100%;
+    margin-left: 0; /* alineada a la izquierda */
+}
+
+/* tabla SOLO asignar */
+.asignar-table {
+    width: 100% !important;
+}
+
+    /* columnas */
+    .asignar-table th:nth-child(1),
+    .asignar-table td:nth-child(1) {
+        width: 30%;
+    }
+
+    .asignar-table th:nth-child(2),
+    .asignar-table td:nth-child(2) {
+        width: 45%;
+    }
+
+    .asignar-table th:nth-child(3),
+    .asignar-table td:nth-child(3) {
+        width: 25%;
+    }
+
+    /* encabezados */
+    .asignar-table th {
+        padding: 14px 20px;
+        white-space: nowrap;
+    }
+
+    /* encabezados centrados */
+    .asignar-table th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* contenido alineado a la izquierda */
+    .asignar-table td {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+        /* columna de acciones (botones) centrada */
+        .asignar-table td:nth-child(3) {
+            text-align: center;
+        }

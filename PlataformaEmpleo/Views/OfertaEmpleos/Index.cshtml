@@ -5,11 +5,13 @@
 }
 
 <h1 class="text-white-special">Index</h1>
+
 <p>
     <a asp-action="Create" class="text-white-special">Crear Oferta</a>
 </p>
 
-<table class= "table">
+<div class="tabla-ofertas-container"> 
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -22,7 +24,7 @@
                 @Html.DisplayNameFor(model => model.Requisitos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ubicacion)
+                @Html.DisplayNameFor(model => model.Ubicacion)    
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaPublicacion)
@@ -42,48 +44,55 @@
             <th>
                 @Html.DisplayNameFor(model => model.Reclutador.NombreEmpresa)
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Requisitos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ubicacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPublicacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCierre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoContrato)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Horario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reclutador.NombreEmpresa)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>
+                    @(item.Titulo != null && item.Titulo.Length > 40? item.Titulo.Substring(0, 40) + "..." : item.Titulo) 
+                </td>
+                <td>
+                    @(item.Descripcion != null && item.Descripcion.Length > 40? item.Descripcion.Substring(0, 40) + "..." : item.Descripcion)
+                </td>
+                <td>
+                    @(item.Requisitos != null && item.Requisitos.Length > 40 ? item.Requisitos.Substring(0, 40) + "..." : item.Requisitos)
+                 </td>
+                <td>
+                    @(item.Ubicacion != null && item.Ubicacion.Length > 40 ? item.Ubicacion.Substring(0, 40) + "...": item.Ubicacion)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaPublicacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCierre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoContrato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salario)
+                </td>
+
+                <td>
+                    @(item.Horario != null && item.Horario.Length > 40 ? item.Horario.Substring(0, 40) + "...": item.Horario)
+            </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reclutador.NombreEmpresa)
+                </td>
+
+                <td style="white-space: nowrap;">
                     <a asp-action="Edit" asp-route-id="@item.IdOferta" class="link-accion">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.IdOferta" class="link-accion">Detalles</a> |
                     <a asp-action="Delete" asp-route-id="@item.IdOferta" class="link-accion">Eliminar</a>
                 </td>
-        </tr>
-}
+            </tr>
+                }
     </tbody>
 </table>
+</div>

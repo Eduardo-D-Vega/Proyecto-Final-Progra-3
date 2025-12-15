@@ -28,13 +28,27 @@
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Candidato)</th>
-            <th>@Html.DisplayNameFor(model => model.PerfilProfesional)</th>
-            <th>@Html.DisplayNameFor(model => model.FormacionAcademica)</th>
-            <th>@Html.DisplayNameFor(model => model.ExperienciaLaboral)</th>
-            <th>@Html.DisplayNameFor(model => model.Habilidades)</th>
-            <th>@Html.DisplayNameFor(model => model.Idiomas)</th>
-            <th>@Html.DisplayNameFor(model => model.Certificaciones)</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerfilProfesional)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FormacionAcademica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExperienciaLaboral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Habilidades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idiomas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Certificaciones)
+            </th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -42,43 +56,34 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Candidato.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Candidato.NombreCompleto)</td>
 
                 <td>
                     @(item.PerfilProfesional != null && 
                     /* hace la verificacion de si el texto es mas largo que los 55 caracteres*/
-                    item.PerfilProfesional.Length > 55 ? item.PerfilProfesional.
+                    item.PerfilProfesional.Length > 40 ? item.PerfilProfesional.
                     /* si es mas largo el texto se muestran los primeros 55 caracrtes y el resto es "...." */
-                    Substring(0, 55) + "..." : item.PerfilProfesional)
+                    Substring(0, 40) + "..." : item.PerfilProfesional)
                 </td>
 
                 <td>
-                    @(item.FormacionAcademica != null && 
-                    item.FormacionAcademica.Length > 55 ? item.FormacionAcademica.
-                    Substring(0, 55) + "..." : item.FormacionAcademica)
+                    @(item.FormacionAcademica != null && item.FormacionAcademica.Length > 40 ? item.FormacionAcademica.Substring(0, 40) + "..." : item.FormacionAcademica)
                 </td>
 
                 <td>
-                    @(item.ExperienciaLaboral != null 
-                    && item.ExperienciaLaboral.Length > 50 ? item.ExperienciaLaboral
-                    .Substring(0, 55) + "..." : item.ExperienciaLaboral)
+                    @(item.ExperienciaLaboral != null && item.ExperienciaLaboral.Length > 40 ? item.ExperienciaLaboral.Substring(0, 40) + "..." : item.ExperienciaLaboral)
                 </td>
 
                 <td>
-                    @(item.Habilidades != null && 
-                    item.Habilidades.Length > 50 ? item.Habilidades
-                                    .Substring(0, 55) + "..." : item.Habilidades)
+                    @(item.Habilidades != null && item.Habilidades.Length > 40 ? item.Habilidades.Substring(0, 40) + "..." : item.Habilidades)
                 </td>
 
                 <td>
-                    @(item.Idiomas != null && item.Idiomas.Length > 50 ? item.Idiomas
-                    .Substring(0, 55) + "..." : item.Idiomas)
+                    @(item.Idiomas != null && item.Idiomas.Length > 40 ? item.Idiomas.Substring(0, 40) + "..." : item.Idiomas)
                 </td>
 
                 <td>
-                    @(item.Certificaciones != null && 
-                    item.Certificaciones.Length > 50 ? item.Certificaciones
-                    .Substring(0, 55) + "..." : item.Certificaciones)
+                    @(item.Certificaciones != null && item.Certificaciones.Length > 40 ? item.Certificaciones.Substring(0, 40) + "..." : item.Certificaciones)
             </td>
                 <td style="white-space: nowrap;">
                     <a asp-action="Edit" asp-route-id="@item.IdCV" class="link-accion">Editar</a> |

@@ -74,34 +74,30 @@
 </div>
 
 <div>
-    <h4 class="text-white-special">Candidatos</h4>
+    <hr class="my-4 border-light">
+    <h4 class="text-white-special mb-3">Lista de candidatos postulados</h4>
 
-    <table class="text-white-special" ="table">
-        <thead>
-            <tr>
-                <th>
-                    NombreCompleto
-                </th>
-                <th>
-                    Telefono
-                </th>
-                <th>
-                    Ciudad
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Postulaciones)
+    <div class="table-responsive tabla-candidatos">
+        <table class="table table-striped table-bordered bg-white text-dark rounded shadow-sm">
+            <thead class="table-light text-center">
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Teléfono</th>
+                    <th>Ciudad</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Postulaciones)
                 {
                     <tr>
                         <td>@item.Postulaciones.Candidato.NombreCompleto</td>
-                        <td>@item.Postulaciones.Candidato.Telefono</td>
+                        <td class="text-center">@item.Postulaciones.Candidato.Telefono</td>
                         <td>@item.Postulaciones.Candidato.Ciudad</td>
                     </tr>
                 }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 

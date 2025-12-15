@@ -9,7 +9,7 @@
 <h4 class="text-white-special">Oferta Postulación</h4>
 <hr />
 <div class="row">
-    <div class="text-white-special" ="col-md-4">
+    <div class="text-white-special col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="OfertasPostulacionesId" />
@@ -25,18 +25,11 @@
                 <select asp-for="IdOferta" class="form-control" asp-items="ViewBag.IdOferta"></select>
                 <span asp-validation-for="IdOferta" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-            </div>
+            <input type="submit" value="Guardar" class="btn btn-contraste" />
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-controller="OfertaPostulacion" asp-action="Index" class="text-white-special">Volver a la lista</a>
-
+    <a asp-action="Index" class="text-white-special">Volver a la lista</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
