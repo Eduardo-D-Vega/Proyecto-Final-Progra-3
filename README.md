@@ -55,3 +55,7 @@ Control de acceso
 El sistema implementa autenticación y autorización basada en roles.
 Los roles disponibles son Administrador, Reclutador y Usuario.
 Cada rol tiene acceso restringido a las funcionalidades del sistema según su nivel de permisos.
+
+
+PDF de la parte escrita:
+https://1drv.ms/b/c/0231a0ce43cf5729/IQCuNMp6kY0eRalVyVwGedEHASrpHXe6Mhh1n60S5R35beU?e=kTQGGs
