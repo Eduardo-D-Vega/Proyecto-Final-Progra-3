@@ -19,7 +19,7 @@ builder.Services.AddIdentity<Usuario,IdentityRole>(options =>
     options.Password.RequireLowercase = true; // requiere al menos una letra min�scula
     options.Password.RequireUppercase = true; // requiere al menos una letra may�scula
     options.Password.RequireNonAlphanumeric = true; // requiere caracteres alfanum�ricos
-    options.Password.RequiredLength = 6; // longitud mInima de la contrase�a
+    options.Password.RequiredLength = 6; // longitud minima de la contrase�a
 
 }).AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -51,7 +51,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles(); // Habilitar el uso de archivos est�ticos
 app.UseRouting();
 
-app.UseAuthentication(); //para la autenticaci�n de usuarios
+app.UseAuthentication(); //para la autenticacion de usuarios
 app.UseAuthorization();
 
 app.MapControllerRoute(

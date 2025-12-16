@@ -90,7 +90,7 @@ namespace PlataformaEmpleo.Documents
             });
         }
 
-        //parte del BUILDER que 
+        //cuerpo del documento 
         private void BuildSection(ColumnDescriptor col, string title, string? content)
         {
             if (string.IsNullOrWhiteSpace(content))

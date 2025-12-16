@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Scaffolding;
 using PlataformaEmpleo.Models;
 
-
 public class AsignarRolesController : Controller
 {
     //roleManager se usa para gestionar los roles
@@ -13,6 +12,7 @@ public class AsignarRolesController : Controller
 
     // constructor
     public AsignarRolesController(
+
         RoleManager<IdentityRole> roleManager, //gestiona los roles
         UserManager<Usuario> userManager) // gestiona los usuarios
     {
